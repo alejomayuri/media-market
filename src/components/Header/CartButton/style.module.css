@@ -1,0 +1,14 @@
+.button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px 0 5px;
+}
+
+.icon {
+    transition: ease-in-out 0.1s;
+}
+
+.icon:hover {
+    stroke: rgb(206, 206, 206);
+}
