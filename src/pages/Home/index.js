@@ -1,22 +1,18 @@
 import style from "./style.module.css";
 
-import MenuIcon from "components/Icons/MenuIcon";
 import Logo from "components/Logo";
-import HeaderButton from "components/Header/HeaderButton";
 import HeaderLi from "components/Header/HeaderLi";
 import DownArrowIcon from "components/Icons/DownArrowIcon";
 import CartButton from "components/Header/CartButton";
 import SearchBar from "components/Header/SearchBar";
+import Dropdown from "components/global/Dropdown";
 
 export default function Home() {
   return (
     <div className={style.home__container}>
       <header className={style.header}>
         <Logo />
-        <HeaderButton>
-          <MenuIcon />
-          Menú
-        </HeaderButton>
+        <Dropdown />
         <SearchBar />
         <ul className={style.ul}>
           <HeaderLi>
@@ -30,6 +26,7 @@ export default function Home() {
         </ul>
         <CartButton />
       </header>
+      <h1>xd</h1>
     </div>
   );
 }
