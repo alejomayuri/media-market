@@ -1,5 +1,5 @@
 import style from "./style.module.css";
-import CartIcon from "components/Icons/CartIcon";
+import CartIcon from "components/global/Icons/CartIcon";
 
 export default function CartButton() {
   return (

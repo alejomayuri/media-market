@@ -1,9 +1,9 @@
 .form {
-    padding: 0 10px;
-    width: calc(100% - 800px);
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 10px;
+    width: 100%;
 }
 
 .input {
@@ -25,4 +25,10 @@
     background-color: #151515;
     outline: none;
     cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .form {
+        display: none;
+    }
 }

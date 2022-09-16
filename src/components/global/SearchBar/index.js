@@ -1,5 +1,5 @@
 import style from "./style.module.css";
-import SearchIcon from "components/Icons/SearchIcon";
+import SearchIcon from "components/global/Icons/SearchIcon";
 
 export default function SearchBar() {
   return (

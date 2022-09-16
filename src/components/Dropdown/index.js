@@ -1,11 +1,46 @@
 import style from "./style.module.css";
 import React, { useState, useEffect, useRef } from "react";
-import MenuIcon from "components/Icons/MenuIcon";
+import { devices } from "styles/theme";
+import MenuIcon from "components/global/Icons/MenuIcon";
+import { useDeviceWidth } from "hooks/useDeviceWidth";
 
-function Dropdown({ items = ["hola"], dropdownTitle }) {
+const CATEGORIES = [
+  "Accesorios",
+  "Bebés",
+  "Belleza",
+  "Casa",
+  "Computación",
+  "Deportes",
+  "Electrodomésticos",
+  "Electrónica",
+  "Hogar",
+  "Juguetes",
+  "Libros",
+  "Mascotas",
+  "Moda",
+  "Muebles",
+  "Salud",
+  "Supermercado",
+  "Videojuegos",
+];
+
+const BRANDS = [
+  "Apple",
+  "Logitech",
+  "Genius",
+  "Micronics",
+  "XBlade",
+  "Samsung",
+  "Sony",
+  "LG",
+  "Nintendo",
+];
+
+function Dropdown({ dropdownTitle }) {
   const activatorRef = useRef(null);
   const dropdownListRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const width = useDeviceWidth();
 
   const clickHandler = () => {
     setIsOpen(!isOpen);
@@ -50,7 +85,7 @@ function Dropdown({ items = ["hola"], dropdownTitle }) {
           ref={activatorRef}
         >
           {dropdownTitle} <MenuIcon />
-          Menú
+          {width > devices.mobile && "Menu"}
         </button>
       </div>
       <div
@@ -59,15 +94,32 @@ function Dropdown({ items = ["hola"], dropdownTitle }) {
           style.dropdown_item_list
         }`}
       >
-        <ul>
-          {items.map((item, index) => {
-            return (
-              <li className={style.item_list} key={index}>
-                <a href={item.slug}>{item}</a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className={style.menu__container}>
+          <div>
+            <h3>Categorias</h3>
+            <ul>
+              {CATEGORIES.map((item, index) => {
+                return (
+                  <li className={style.item_list} key={index}>
+                    <a href={item.slug}>{item}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div>
+            <h3>Marcas</h3>
+            <ul>
+              {BRANDS.map((item, index) => {
+                return (
+                  <li className={style.item_list} key={index}>
+                    <a href={item.slug}>{item}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -1,19 +1,28 @@
-.home__container {
-    margin: 0 auto;
-    max-width: 2000px;
-    width: 100%
+.location {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 20px;
 }
 
-.header {
-    background-color: #bd0000;
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    padding-right: 30px;
+.location h3 {
+    margin: 5px 10px 5px 0;
 }
 
-.ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
+.location a {
+    color: #000;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.img {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    
+}
+
+@media (max-width: 500px) {
+    
 }
