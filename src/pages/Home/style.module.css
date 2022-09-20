@@ -19,10 +19,25 @@
     width: 100%;
 }
 
-@media (max-width: 1024px) {
+/*destacados*/
+
+.destacados__container {
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 1200px;
+}
+
+
+
+
+/* @media (max-width: 1024px) {
     
 }
 
 @media (max-width: 500px) {
     
-}
+} */

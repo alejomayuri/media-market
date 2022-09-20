@@ -1,0 +1,22 @@
+.destacado {
+    background-color: #eae6e6;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.destacado > a img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    offset: 0;
+}
+
+.three {
+    height: 230px;
+    width: calc(33.33333% - 30px);
+}
+
+.four {
+    height: 200px;
+    width: calc(25% - 30px);
+}

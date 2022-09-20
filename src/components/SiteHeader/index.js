@@ -12,28 +12,26 @@ export default function SiteHeader() {
   const width = useDeviceWidth();
 
   return (
-    <div className={style.home__container}>
-      <header className={style.header}>
-        <div>
-          {width <= devices.mobile && <Dropdown />}
-          <Logo />
-          {width > devices.mobile && <Dropdown />}
-        </div>
-        <div className={style.div__form__container}>
-          <SearchBar />
-          <ul className={`${style.ul}`}>
-            <HeaderLi>
-              Iniciar sesión
-              <DownArrowIcon width={25} />
-            </HeaderLi>
-            <HeaderLi>
-              Mis compras
-              <DownArrowIcon width={25} />
-            </HeaderLi>
-          </ul>
-          <CartButton />
-        </div>
-      </header>
-    </div>
+    <header className={style.header}>
+      <div>
+        {width <= devices.mobile && <Dropdown />}
+        <Logo />
+        {width > devices.mobile && <Dropdown />}
+      </div>
+      <div className={style.div__form__container}>
+        <SearchBar />
+        <ul className={`${style.ul}`}>
+          <HeaderLi>
+            Iniciar sesión
+            <DownArrowIcon width={25} />
+          </HeaderLi>
+          <HeaderLi>
+            Mis compras
+            <DownArrowIcon width={25} />
+          </HeaderLi>
+        </ul>
+        <CartButton />
+      </div>
+    </header>
   );
 }

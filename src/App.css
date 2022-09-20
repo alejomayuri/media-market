@@ -1,5 +1,16 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+} */
+
 .App {
     margin: 0 auto;
     max-width: 2000px;
     width: 100%
+}
+
+a {
+    text-decoration: none;
 }

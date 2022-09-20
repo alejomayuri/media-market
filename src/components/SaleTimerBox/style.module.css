@@ -1,0 +1,10 @@
+.container {
+    background-color: #000;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.SaleTimerBody {
+    display: flex;
+}
