@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import { useEffect, useState } from "react";
+import Timer from "components/global/Icons/Timer";
 
 export default function SaleTimer() {
   let year = new Date().getFullYear();
@@ -69,14 +70,20 @@ export default function SaleTimer() {
 
   return (
     <>
-      <div className="sale-timer">
-        <div className="sale-timer__header">
-          <h2 className="sale-timer__title">Tiempo restante</h2>
+      <div className={style.sale__timer}>
+        <div className={style.sale__timer__header}>
+          <h2 className="sale-timer__title">Válido por tiempo limitado</h2>
+          <Timer width={"40px"} fill="#fff" />
         </div>
-        <div className="sale-timer__body">
+        <div className={style.sale__timer__body}>
           <div className="sale-timer__item">
             <div className={style.number}>
               <p>{`${timeLeft.days < 10 ? "0" : ""}${timeLeft.days}`}</p>
+            </div>
+          </div>
+          <div className="sale-timer__item">
+            <div className={style.number}>
+              <p className={style.two__points}>:</p>
             </div>
           </div>
           <div className="sale-timer__item">
@@ -86,7 +93,17 @@ export default function SaleTimer() {
           </div>
           <div className="sale-timer__item">
             <div className={style.number}>
+              <p className={style.two__points}>:</p>
+            </div>
+          </div>
+          <div className="sale-timer__item">
+            <div className={style.number}>
               <p>{`${timeLeft.minutes < 10 ? "0" : ""}${timeLeft.minutes}`}</p>
+            </div>
+          </div>
+          <div className="sale-timer__item">
+            <div className={style.number}>
+              <p className={style.two__points}>:</p>
             </div>
           </div>
           <div className="sale-timer__item">

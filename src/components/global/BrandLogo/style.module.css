@@ -1,0 +1,22 @@
+.brand__logo {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+.brand__logo img {
+    -webkit-filter: grayscale(1);
+    cursor: pointer;
+    filter: grayscale(1);
+    opacity: .8;
+    transition: .3s;
+    width: 100%;
+}
+
+.brand__logo img:hover {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.1);
+}

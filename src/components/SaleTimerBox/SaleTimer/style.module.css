@@ -1,3 +1,44 @@
+.sale__timer {
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.sale__timer, .sale__timer__body {
+    align-items: center;
+    display: flex;
+}
+
+.sale__timer__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.sale__timer__body {
+    margin: 0;
+}
+
+.sale__timer h2 {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0 15px 0 0;
+}
+
 .number {
     color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 5px;
+}
+
+.number p {
+    margin: 0;
+}
+
+.two__points {
+    padding-bottom: 5px;
 }

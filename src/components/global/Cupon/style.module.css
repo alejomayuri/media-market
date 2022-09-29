@@ -1,7 +1,7 @@
 .destacado {
     background-color: #eae6e6;
     border-radius: 10px;
-    margin: 15px;
+    margin: 5px;
 }
 
 .destacado > a img {
@@ -13,10 +13,10 @@
 
 .three {
     height: 230px;
-    width: calc(33.33333% - 30px);
+    width: calc(33.33333% - 10px);
 }
 
 .four {
-    height: 200px;
-    width: calc(25% - 30px);
+    height: 220px;
+    width: calc(25% - 10px);
 }

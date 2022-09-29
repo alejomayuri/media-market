@@ -1,0 +1,36 @@
+.category__img {
+    background-color: #d5d5d5;
+    border-radius: 999px;
+    height: 100px;
+    padding: 10px;
+    width: 100px;
+}
+
+.category__img img {
+    height: 100%;
+    width: 100%;
+}
+
+.h3 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.red {
+    background-color: rgb(240, 6, 6);
+}
+.green {
+    background-color: rgb(8, 156, 20);
+}
+.blue {
+    background-color: rgb(27, 17, 220);
+}
+.purple {
+    background-color: rgb(140, 0, 255);
+}
+.orange {
+    background-color: rgb(255, 145, 0);
+}
+.cyan {
+    background-color: rgb(0, 149, 255);
+}
