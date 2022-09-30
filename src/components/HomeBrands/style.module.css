@@ -1,0 +1,6 @@
+.brand__logo__container {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1200px;
+}

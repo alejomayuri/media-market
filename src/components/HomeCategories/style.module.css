@@ -1,0 +1,7 @@
+.home__categories__container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1200px;
+}

@@ -13,10 +13,20 @@
 
 .three {
     height: 230px;
-    width: calc(33.33333% - 10px);
+    width: 390px;
 }
 
 .four {
     height: 220px;
     width: calc(25% - 10px);
+}
+
+@media screen and (max-width: 1200px) {
+    .three {
+        height: 154px;
+        width: 260px;
+    }
+    .four {
+        width: calc(50% - 10px);
+    }
 }

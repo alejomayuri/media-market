@@ -1,0 +1,96 @@
+.top__footer {
+    background-color: rgb(151, 150, 150);
+    margin-top: 50px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 50px 0;
+    width: 1200px;
+}
+
+.container > div {
+    padding: 0;
+    width: 30%;
+}
+
+.logo {
+    width: 100%;
+}
+
+.info {
+    margin-top: 20px;
+    line-height: 22px;
+    font-size: 15px;
+}
+
+.address {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #737373;
+}
+
+.social__container {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.map__container {
+    margin-top: 20px;
+}
+
+.map__container img {
+    width: 100%;
+}
+
+.form__container h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form__container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    margin-bottom: 10px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.textarea {
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    height: 90px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.submit {
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 7px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background: #000;
+    cursor: pointer;
+}
+
+.bottom__footer__text {
+    padding: 0 20px;
+    font-size: 13px;
+    color: #000;
+    line-height: 1.5;
+  }
