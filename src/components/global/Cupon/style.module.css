@@ -28,5 +28,19 @@
     }
     .four {
         width: calc(50% - 10px);
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .three {
+        height: 278px;
+        width: 365px;
+    }
+    .four {
+        height: 278px;
+        width: 345px;
+        margin: 10px auto;
+        /* height: auto; */
     }
 }

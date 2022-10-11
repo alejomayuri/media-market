@@ -5,3 +5,16 @@
     margin-top: 20px;
     width: 1200px;
 }
+
+@media screen and (max-width: 1200px) {
+    .home__categories__container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .home__categories__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

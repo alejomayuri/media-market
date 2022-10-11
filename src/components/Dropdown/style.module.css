@@ -57,18 +57,15 @@
   .item_list a,
   .item_list a:link {
     display: flex;
-    /* gap: 0.8rem; */
-    color: #666666;
     font-weight: 600;
     text-decoration: none;
-    padding: 0.8rem;
-  
+    padding: 5px;
     transition: all 0.1s linear;
   }
   
   .item_list a:hover {
-    background-color: gray;
-    color: white;
+    /* background-color: gray; */
+    color: rgb(206, 1, 1);
   }
 
   /*box*/
@@ -111,16 +108,67 @@
   margin: 0 auto;
   max-width: 1200px;
   width: 100%;
+  height: 100%;
 }
 
 .menu__container > div {
-  width: 50%;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+
+.menu__container > div::-webkit-scrollbar {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.menu__container > div::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+.menu__container > div::-webkit-scrollbar-button:increment,.menu__container > div::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.menu__container > div::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.menu__container > div::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.menu__container > div::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+
+.ul__categories__container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  align-items: start;
 }
 
 .menu__container ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    padding: 0;
+  padding: 0;
+}
+
+
+
+/*Category element*/
+
+.category__name {
+  color: #1a1b1b;
+  font-size: 20px;
+}
+
+.subcategory__name {
+  color: #4b4b4b;
 }
 
 @media (max-width: 500px) {
@@ -133,5 +181,19 @@
 
   .box {
     margin-top: 50px;
+  }
+
+  .h3 {
+    padding-left: 30px;
+  }
+
+  .ul__categories__container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px !important;
+  }
+
+  .item_list_container {
+    margin-bottom: 20px;
   }
 }

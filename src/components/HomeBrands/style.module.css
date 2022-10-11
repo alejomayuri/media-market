@@ -4,3 +4,16 @@
     margin-top: 20px;
     width: 1200px;
 }
+
+@media screen and (max-width: 1200px) {
+    .brand__logo__container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .brand__logo__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

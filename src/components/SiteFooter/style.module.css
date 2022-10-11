@@ -93,4 +93,22 @@
     font-size: 13px;
     color: #000;
     line-height: 1.5;
-  }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        flex-direction: column;
+        width: 98%;
+    }
+
+    .container > div {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+}

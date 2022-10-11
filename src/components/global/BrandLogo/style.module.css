@@ -20,3 +20,20 @@
     opacity: 1;
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 1200px) {
+    .brand__logo {
+        padding: 15px;
+    }
+
+    .brand__logo img {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .brand__logo {
+        padding: 30px;
+    }
+}

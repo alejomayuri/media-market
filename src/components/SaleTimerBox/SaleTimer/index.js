@@ -6,7 +6,7 @@ export default function SaleTimer() {
   let year = new Date().getFullYear();
 
   // Format mm/dd/yyyy
-  let dateToEnd = `10/11/${year}`;
+  let dateToEnd = `10/24/${year}`;
 
   const calculateTimeLeft = () => {
     const difference = +new Date(dateToEnd) - +new Date();

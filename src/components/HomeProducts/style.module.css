@@ -23,3 +23,20 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media screen and (max-width: 1200px) {
+    .home__products {
+        width: 98%;
+    }
+
+    .home__products__container {
+        overflow-x: scroll;
+        padding-left: 305px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .home__products h2 {
+        font-size: 30px;
+    }
+}

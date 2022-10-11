@@ -42,3 +42,39 @@
 .two__points {
     padding-bottom: 5px;
 }
+
+@media screen and (max-width: 1200px) {
+    .sale__timer__header {
+        margin-right: 10px;
+    }
+
+    .sale__timer h2 {
+        font-size: 30px;
+    }
+
+    .number {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .sale__timer {
+        flex-direction: column;
+    }
+
+    .sale__timer__header svg {
+        display: none;
+    }
+
+    .sale__timer h2 {
+        font-size: 25px;
+    }
+
+    .sale__timer__body {
+        margin-top: 10px;
+    }
+
+    .number {
+        font-size: 35px;
+    }
+}

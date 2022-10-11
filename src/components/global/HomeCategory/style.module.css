@@ -34,3 +34,24 @@
 .cyan {
     background-color: rgb(0, 149, 255);
 }
+
+
+@media screen and (max-width: 1200px) {
+    .category__img {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .category__img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .home__category__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

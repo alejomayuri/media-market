@@ -11,3 +11,16 @@
 .SaleTimerBody {
     display: flex;
 }
+
+@media screen and (max-width: 1200px) {
+    .container {
+        padding-top: 10px;
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .SaleTimerBody {
+        flex-direction: column;
+    }
+}
