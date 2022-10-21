@@ -21,16 +21,16 @@ export default function SiteHeader() {
           {width > devices.mobile && <Dropdown />}
         </div>
         <div className={style.div__form__container}>
-          <SearchBar />
-          <ul className={`${style.ul}`}>
-            <HeaderLi>
+          {width > devices.mobile && <SearchBar />}
+          <ul className={style.ul}>
+            <li className={`${style.li} ${style.only__tablet__desk}`}>
               Iniciar sesión
               <DownArrowIcon width={25} />
-            </HeaderLi>
-            <HeaderLi>
+            </li>
+            <li className={`${style.li} ${style.only__desk}`}>
               Mis compras
               <DownArrowIcon width={25} />
-            </HeaderLi>
+            </li>
           </ul>
           <CartButton />
         </div>

@@ -3,307 +3,289 @@ import React, { useState, useEffect, useRef } from "react";
 import { devices } from "styles/theme";
 import MenuIcon from "components/global/Icons/MenuIcon";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
+import HeaderLi from "components/global/HeaderLi";
+import SearchBar from "components/global/SearchBar";
 
 const REAL_CATEGORIES = [
   {
     name: "Teclados",
-    slug: "/categorias/teclados",
+    slug: "/productos/teclados",
     subcategories: [
       {
         name: "Teclados Bluetooth",
-        slug: "/categorias/teclados/teclados-bluetooth",
+        slug: "/productos/teclados/teclados-bluetooth",
       },
       {
         name: "Teclados Wireless",
-        slug: "/categorias/teclados/teclados-wireless",
+        slug: "/productos/teclados/teclados-wireless",
       },
       {
         name: "Teclados USB",
-        slug: "/categorias/teclados/teclados-usb",
+        slug: "/productos/teclados/teclados-usb",
       },
       {
         name: "Teclados Gamer",
-        slug: "/categorias/teclados/teclados-gamer",
+        slug: "/productos/teclados/teclados-gamer",
       },
     ],
   },
   {
     name: "Mouse",
-    slug: "/categorias/mouse",
+    slug: "/productos/mouse",
     subcategories: [
       {
         name: "Mouse Wireless",
-        slug: "/categorias/mouse/mouse-wireless",
+        slug: "/productos/mouse/mouse-wireless",
       },
       {
         name: "Mouse USB",
-        slug: "/categorias/mouse/mouse-usb",
+        slug: "/productos/mouse/mouse-usb",
       },
       {
         name: "Mouse Gamer",
-        slug: "/categorias/mouse/mouse-gamer",
+        slug: "/productos/mouse/mouse-gamer",
       },
       {
         name: "Mouse Pad",
-        slug: "/categorias/mouse/mouse-pad",
+        slug: "/productos/mouse/mouse-pad",
       },
     ],
   },
   {
     name: "Audífonos",
-    slug: "/categorias/audifonos",
+    slug: "/productos/audifonos",
     subcategories: [
       {
         name: "Audífonos p/PC",
-        slug: "/categorias/audifonos/audifonos-pc",
+        slug: "/productos/audifonos/audifonos-pc",
       },
       {
         name: "Audífonos p/celular",
-        slug: "/categorias/audifonos/audifonos-celular",
+        slug: "/productos/audifonos/audifonos-celular",
       },
       {
         name: "Audífonos Bluetooth",
-        slug: "/categorias/audifonos/audifonos-bluetooth",
+        slug: "/productos/audifonos/audifonos-bluetooth",
       },
     ],
   },
   {
     name: "Zona Gamer",
-    slug: "/categorias/zona-gamer",
+    slug: "/productos/zona-gamer",
     subcategories: [
       {
         name: "Teclados Gamer",
-        slug: "/categorias/zona-gamer/teclados-gamer",
+        slug: "/productos/zona-gamer/teclados-gamer",
       },
       {
         name: "Mouse Gamer",
-        slug: "/categorias/zona-gamer/mouse-gamer",
+        slug: "/productos/zona-gamer/mouse-gamer",
       },
       {
         name: "Audífonos Gamer",
-        slug: "/categorias/zona-gamer/audifonos-gamer",
+        slug: "/productos/zona-gamer/audifonos-gamer",
       },
       {
         name: "Micrófonos Gamer",
-        slug: "/categorias/zona-gamer/microfonos-gamer",
+        slug: "/productos/zona-gamer/microfonos-gamer",
       },
       {
         name: "Sillas Gamer",
-        slug: "/categorias/zona-gamer/sillas-gamer",
+        slug: "/productos/zona-gamer/sillas-gamer",
       },
     ],
   },
   {
     name: "Almacenamiento",
-    slug: "/categorias/almacenamiento",
+    slug: "/productos/almacenamiento",
     subcategories: [
       {
         name: "Memoria USB",
-        slug: "/categorias/almacenamiento/memorias-usb",
+        slug: "/productos/almacenamiento/memorias-usb",
       },
       {
         name: "Memoria micro SD",
-        slug: "/categorias/almacenamiento/memoria-micro-sd",
+        slug: "/productos/almacenamiento/memoria-micro-sd",
       },
       {
         name: "Disco Duro Externo",
-        slug: "/categorias/almacenamiento/discos-duros-externos",
+        slug: "/productos/almacenamiento/discos-duros-externos",
       },
       {
         name: "Disco Duro SSD",
-        slug: "/categorias/almacenamiento/disco-duro-ssd",
+        slug: "/productos/almacenamiento/disco-duro-ssd",
       },
     ],
   },
   {
     name: "Parlantes",
-    slug: "/categorias/parlantes",
+    slug: "/productos/parlantes",
     subcategories: [
       {
         name: "Parlantes para PC",
-        slug: "/categorias/parlantes/parlantes-pc",
+        slug: "/productos/parlantes/parlantes-pc",
       },
       {
         name: "Parlantes Bluetooth",
-        slug: "/categorias/parlantes/parlantes-bluetooth",
+        slug: "/productos/parlantes/parlantes-bluetooth",
       },
     ],
   },
   {
     name: "Estabilizadores y Corriente",
-    slug: "/categorias/estabilizadores-y-corriente",
+    slug: "/productos/estabilizadores-y-corriente",
   },
   {
     name: "Micrófonos",
-    slug: "/categorias/microfonos",
+    slug: "/productos/microfonos",
     subcategories: [
       {
         name: "Micrófonos p/PC",
-        slug: "/categorias/microfonos/microfonos-pc",
+        slug: "/productos/microfonos/microfonos-pc",
       },
       {
         name: "Micrófonos p/celular",
-        slug: "/categorias/microfonos/microfonos-celular",
+        slug: "/productos/microfonos/microfonos-celular",
       },
       {
         name: "Micrófonos p/karaoke",
-        slug: "/categorias/microfonos/microfonos-karaoke",
+        slug: "/productos/microfonos/microfonos-karaoke",
       },
     ],
   },
   {
     name: "Adaptadores",
-    slug: "/categorias/adaptadores",
+    slug: "/productos/adaptadores",
     subcategories: [
       {
         name: "Adaptadores Bluetooth",
-        slug: "/categorias/adaptadores/adaptadores-bluetooth",
+        slug: "/productos/adaptadores/adaptadores-bluetooth",
       },
       {
         name: "Adaptadores de red",
-        slug: "/categorias/adaptadores/adaptadores-de-red",
+        slug: "/productos/adaptadores/adaptadores-de-red",
       },
       {
         name: "Adaptadores de audio",
-        slug: "/categorias/adaptadores/adaptadores-de-audio",
+        slug: "/productos/adaptadores/adaptadores-de-audio",
       },
       {
         name: "Adaptadores USB",
-        slug: "/categorias/adaptadores/adaptadores-usb",
+        slug: "/productos/adaptadores/adaptadores-usb",
       },
     ],
   },
   {
     name: "Hubs / Docking Station",
-    slug: "/categorias/hubs-docking-station",
+    slug: "/productos/hubs-docking-station",
   },
   {
     name: "Cables",
-    slug: "/categorias/cables",
+    slug: "/productos/cables",
   },
   {
     name: "Cámaras",
-    slug: "/categorias/camaras",
+    slug: "/productos/camaras",
     subcategories: [
       {
         name: "Cámaras web",
-        slug: "/categorias/camaras/camaras-web",
+        slug: "/productos/camaras/camaras-web",
       },
       {
         name: "Cámaras de vigilancia",
-        slug: "/categorias/camaras/camaras-de-vigilancia",
+        slug: "/productos/camaras/camaras-de-vigilancia",
       },
     ],
   },
   {
     name: "Redes y conectividad",
-    slug: "/categorias/redes-y-conectividad",
+    slug: "/productos/redes-y-conectividad",
   },
   {
     name: "Mochilas / Portalaptop / Protectores",
-    slug: "/categorias/mochilas-portalaptop-protectores",
+    slug: "/productos/mochilas-portalaptop-protectores",
   },
   {
     name: "Coolers",
-    slug: "/categorias/coolers",
+    slug: "/productos/coolers",
   },
   {
     name: "Smart Home",
-    slug: "/categorias/smart-home",
+    slug: "/productos/smart-home",
   },
   {
     name: "Fuentes de Poder",
-    slug: "/categorias/fuentes-de-poder",
+    slug: "/productos/fuentes-de-poder",
   },
   {
     name: "Celulares",
-    slug: "/categorias/celulares",
+    slug: "/productos/celulares",
     subcategories: [
       {
         name: "iPhone",
-        slug: "/categorias/celulares/iphone",
+        slug: "/productos/celulares/iphone",
       },
       {
         name: "Samsung",
-        slug: "/categorias/celulares/samsung",
+        slug: "/productos/celulares/samsung",
       },
       {
         name: "Xiaomi",
-        slug: "/categorias/celulares/xiaomi",
+        slug: "/productos/celulares/xiaomi",
       },
       {
         name: "Motorola",
-        slug: "/categorias/celulares/motorola",
+        slug: "/productos/celulares/motorola",
       },
       {
         name: "Vivo",
-        slug: "/categorias/celulares/vivo",
+        slug: "/productos/celulares/vivo",
       },
       {
         name: "Realme",
-        slug: "/categorias/celulares/realme",
+        slug: "/productos/celulares/realme",
       },
     ],
   },
   {
     name: "Accesorios para Celulares",
-    slug: "/categorias/accesorios-para-celulares",
+    slug: "/productos/accesorios-para-celulares",
     subcategories: [
       {
         name: "Cargadores p/auto",
-        slug: "/categorias/accesorios-para-celulares/cargadores",
+        slug: "/productos/accesorios-para-celulares/cargadores",
       },
       {
         name: "Cables",
-        slug: "/categorias/accesorios-para-celulares/cables",
+        slug: "/productos/accesorios-para-celulares/cables",
       },
       {
         name: "Adaptadores",
-        slug: "/categorias/accesorios-para-celulares/adaptadores",
+        slug: "/productos/accesorios-para-celulares/adaptadores",
       },
       {
         name: "Almacenamiento",
-        slug: "/categorias/accesorios-para-celulares/almacenamiento",
+        slug: "/productos/accesorios-para-celulares/almacenamiento",
       },
       {
         name: "Baterías",
-        slug: "/categorias/accesorios-para-celulares/baterias",
+        slug: "/productos/accesorios-para-celulares/baterias",
       },
       {
         name: "Carcasas / Protectores",
-        slug: "/categorias/accesorios-para-celulares/carcasas-protectores",
+        slug: "/productos/accesorios-para-celulares/carcasas-protectores",
       },
       {
         name: "Sujetadores / pop sockets",
-        slug: "/categorias/accesorios-para-celulares/sujetadores-pop-sockets",
+        slug: "/productos/accesorios-para-celulares/sujetadores-pop-sockets",
       },
     ],
   },
   {
     name: "Servicio Técnico de Celulares",
-    slug: "/categorias/servicio-tecnico-de-celulares",
+    slug: "/productos/servicio-tecnico-de-celulares",
   },
 ];
-
-// const CATEGORIES = [
-//   "Accesorios",
-//   "Bebés",
-//   "Belleza",
-//   "Casa",
-//   "Computación",
-//   "Deportes",
-//   "Electrodomésticos",
-//   "Electrónica",
-//   "Hogar",
-//   "Juguetes",
-//   "Libros",
-//   "Mascotas",
-//   "Moda",
-//   "Muebles",
-//   "Salud",
-//   "Supermercado",
-//   "Videojuegos",
-// ];
 
 // const BRANDS = [
 //   "Apple",
@@ -377,6 +359,21 @@ function Dropdown({ dropdownTitle }) {
       >
         <div className={style.menu__container}>
           <div>
+            {width <= devices.mobile && (
+              <div className={style.top__menu}>
+                <SearchBar />
+              </div>
+            )}
+            <div className={style.no_tablet_desk__myShopping}>
+              <button>
+                <span>Iniciar sesión</span>
+              </button>
+            </div>
+            <div className={style.no_desk__myShopping}>
+              <button>
+                <span>Mis compras</span>
+              </button>
+            </div>
             <h3 className={style.h3}>Categorias</h3>
             <ul className={style.ul__categories__container}>
               {REAL_CATEGORIES.map((item, index) => {
