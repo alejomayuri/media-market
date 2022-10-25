@@ -3,13 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { devices } from "styles/theme";
 import MenuIcon from "components/global/Icons/MenuIcon";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
-import HeaderLi from "components/global/HeaderLi";
 import SearchBar from "components/global/SearchBar";
+import { Link } from "wouter";
 
 const REAL_CATEGORIES = [
   {
     name: "Teclados",
-    slug: "/productos/teclados",
+    slug: "/productos?categoria=teclados",
     subcategories: [
       {
         name: "Teclados Bluetooth",
@@ -25,13 +25,13 @@ const REAL_CATEGORIES = [
       },
       {
         name: "Teclados Gamer",
-        slug: "/productos/teclados/teclados-gamer",
+        slug: "/productos?categoria=teclados&subcategoria=teclados-gamer",
       },
     ],
   },
   {
     name: "Mouse",
-    slug: "/productos/mouse",
+    slug: "/productos?categoria=mouse",
     subcategories: [
       {
         name: "Mouse Wireless",
@@ -53,7 +53,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Audífonos",
-    slug: "/productos/audifonos",
+    slug: "/productos?categoria=audifonos",
     subcategories: [
       {
         name: "Audífonos p/PC",
@@ -71,7 +71,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Zona Gamer",
-    slug: "/productos/zona-gamer",
+    slug: "/productos?categoria=zona-gamer",
     subcategories: [
       {
         name: "Teclados Gamer",
@@ -97,7 +97,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Almacenamiento",
-    slug: "/productos/almacenamiento",
+    slug: "/productos?categoria=almacenamiento",
     subcategories: [
       {
         name: "Memoria USB",
@@ -119,7 +119,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Parlantes",
-    slug: "/productos/parlantes",
+    slug: "/productos?categoria=parlantes",
     subcategories: [
       {
         name: "Parlantes para PC",
@@ -132,12 +132,8 @@ const REAL_CATEGORIES = [
     ],
   },
   {
-    name: "Estabilizadores y Corriente",
-    slug: "/productos/estabilizadores-y-corriente",
-  },
-  {
     name: "Micrófonos",
-    slug: "/productos/microfonos",
+    slug: "/productos?categoria=microfonos",
     subcategories: [
       {
         name: "Micrófonos p/PC",
@@ -155,7 +151,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Adaptadores",
-    slug: "/productos/adaptadores",
+    slug: "/productos?categoria=adaptadores",
     subcategories: [
       {
         name: "Adaptadores Bluetooth",
@@ -176,16 +172,8 @@ const REAL_CATEGORIES = [
     ],
   },
   {
-    name: "Hubs / Docking Station",
-    slug: "/productos/hubs-docking-station",
-  },
-  {
-    name: "Cables",
-    slug: "/productos/cables",
-  },
-  {
     name: "Cámaras",
-    slug: "/productos/camaras",
+    slug: "/productos?categoria=camaras",
     subcategories: [
       {
         name: "Cámaras web",
@@ -198,28 +186,22 @@ const REAL_CATEGORIES = [
     ],
   },
   {
-    name: "Redes y conectividad",
-    slug: "/productos/redes-y-conectividad",
-  },
-  {
-    name: "Mochilas / Portalaptop / Protectores",
-    slug: "/productos/mochilas-portalaptop-protectores",
-  },
-  {
-    name: "Coolers",
-    slug: "/productos/coolers",
-  },
-  {
     name: "Smart Home",
-    slug: "/productos/smart-home",
-  },
-  {
-    name: "Fuentes de Poder",
-    slug: "/productos/fuentes-de-poder",
+    slug: "/productos?categoria=smart-home",
+    subcategories: [
+      {
+        name: "Alexa",
+        slug: "/productos/smart-home/alexa",
+      },
+      {
+        name: "Google Home",
+        slug: "/productos/smart-home/google-home",
+      },
+    ],
   },
   {
     name: "Celulares",
-    slug: "/productos/celulares",
+    slug: "/productos?categoria=celulares",
     subcategories: [
       {
         name: "iPhone",
@@ -249,7 +231,7 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Accesorios para Celulares",
-    slug: "/productos/accesorios-para-celulares",
+    slug: "/productos?categoria=accesorios-para-celulares",
     subcategories: [
       {
         name: "Cargadores p/auto",
@@ -283,21 +265,76 @@ const REAL_CATEGORIES = [
   },
   {
     name: "Servicio Técnico de Celulares",
-    slug: "/productos/servicio-tecnico-de-celulares",
+    slug: "/productos?categoria=servicio-tecnico-de-celulares",
+  },
+  {
+    name: "Estabilizadores y Corriente",
+    slug: "/productos?categoria=estabilizadores-y-corriente",
+  },
+  {
+    name: "Hubs / Docking Station",
+    slug: "/productos?categoria=hubs-docking-station",
+  },
+  {
+    name: "Cables",
+    slug: "/productos?categoria=cables",
+  },
+  {
+    name: "Redes y conectividad",
+    slug: "/productos?categoria=redes-y-conectividad",
+  },
+  {
+    name: "Mochilas / Portalaptop / Protectores",
+    slug: "/productos?categoria=mochilas-portalaptop-protectores",
+  },
+  {
+    name: "Coolers",
+    slug: "/productos?categoria=coolers",
+  },
+  {
+    name: "Fuentes de Poder",
+    slug: "/productos?categoria=fuentes-de-poder",
   },
 ];
 
-// const BRANDS = [
-//   "Apple",
-//   "Logitech",
-//   "Genius",
-//   "Micronics",
-//   "XBlade",
-//   "Samsung",
-//   "Sony",
-//   "LG",
-//   "Nintendo",
-// ];
+const BRANDS = [
+  {
+    name: "Apple",
+    slug: "/productos/Apple",
+  },
+  {
+    name: "Logitech",
+    slug: "/productos/Logitech",
+  },
+  {
+    name: "Genius",
+    slug: "/productos/Genius",
+  },
+  {
+    name: "Micronics",
+    slug: "/productos/Micronics",
+  },
+  {
+    name: "XBlade",
+    slug: "/productos/XBlade",
+  },
+  {
+    name: "Samsung",
+    slug: "/productos/Samsung",
+  },
+  {
+    name: "Sony",
+    slug: "/productos/Sony",
+  },
+  {
+    name: "LG",
+    slug: "/productos/LG",
+  },
+  {
+    name: "Nintendo",
+    slug: "/productos/Nintendo",
+  },
+];
 
 function Dropdown({ dropdownTitle }) {
   const activatorRef = useRef(null);
@@ -307,6 +344,7 @@ function Dropdown({ dropdownTitle }) {
 
   const clickHandler = () => {
     setIsOpen(!isOpen);
+    console.log("click");
   };
 
   const keyHandler = (event) => {
@@ -330,7 +368,7 @@ function Dropdown({ dropdownTitle }) {
 
   useEffect(() => {
     if (isOpen) {
-      dropdownListRef.current.querySelector("a").focus();
+      dropdownListRef.current.querySelector("button").focus();
       document.addEventListener("mousedown", clickOutsideHandler);
     } else {
       document.addEventListener("mousedown", clickOutsideHandler);
@@ -370,7 +408,7 @@ function Dropdown({ dropdownTitle }) {
               </button>
             </div>
             <div className={style.no_desk__myShopping}>
-              <button>
+              <button onClick={clickHandler}>
                 <span>Mis compras</span>
               </button>
             </div>
@@ -378,24 +416,26 @@ function Dropdown({ dropdownTitle }) {
             <ul className={style.ul__categories__container}>
               {REAL_CATEGORIES.map((item, index) => {
                 return (
-                  <li
-                    className={`${style.item_list} ${style.item_list_container}`}
-                    key={index}
-                  >
-                    <a className={style.category__name} href={item.slug}>
-                      {item.name}
-                    </a>
+                  <li className={style.item_list_container} key={index}>
+                    <Link
+                      onClick={clickHandler}
+                      className={style.a__item_list}
+                      href={item.slug}
+                    >
+                      <button>{item.name}</button>
+                    </Link>
                     {item.subcategories && item.subcategories.length > 0 && (
                       <ul>
                         {item.subcategories.map((subitem, index) => {
                           return (
                             <li className={style.item_list} key={index}>
-                              <a
+                              <Link
+                                onClick={clickHandler}
                                 className={style.subcategory__name}
                                 href={subitem.slug}
                               >
-                                {subitem.name}
-                              </a>
+                                <button>{subitem.name}</button>
+                              </Link>
                             </li>
                           );
                         })}
@@ -405,19 +445,26 @@ function Dropdown({ dropdownTitle }) {
                 );
               })}
             </ul>
-          </div>
-          {/* <div>
-            <h3>Marcas</h3>
-            <ul>
+            <h3 className={style.h3}>Marcas</h3>
+            <ul className={style.ul__categories__container}>
               {BRANDS.map((item, index) => {
                 return (
-                  <li className={style.item_list} key={index}>
-                    <a href={item.slug}>{item}</a>
+                  <li className={style.item_list_container} key={index}>
+                    <Link
+                      onClick={clickHandler}
+                      className={style.category__name}
+                      href={item.slug}
+                    >
+                      <button>{item.name}</button>
+                    </Link>
+                    {/* <a className={style.category__name} href={item.slug}>
+                      {item.name}
+                    </a> */}
                   </li>
                 );
               })}
             </ul>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

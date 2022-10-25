@@ -46,33 +46,61 @@
     opacity: 1;
   }
   
-  .item_list {
+  .item_list, .item_list_container {
     list-style: none;
   }
   
-  .item_list:last-child a {
+  .item_list:last-child button, .item_list_container:last-child button {
     border-bottom: none;
   }
   
-  .item_list a,
-  .item_list a:link {
+  .item_list button, .item_list_container button,
+  .item_list button:link, .item_list_container button:link {
     display: flex;
     font-weight: 600;
     text-decoration: none;
     padding: 5px;
     transition: all 0.1s linear;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .item_list_container > button {
+    font-size: 20px;
+    color: #000;
   }
   
-  .item_list a:hover {
+  .item_list button:hover, .item_list_container button:hover {
     /* background-color: gray; */
     color: rgb(206, 1, 1);
+  }
+
+  .item_list button {
+    color: #4b4b4b;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .item_list_container {
+    margin-bottom: 30px;
+  }
+
+  .h3 {
+    background-color: #000000;
+    padding: 5px 0 5px 10px;
+    color: #fff;
+    border-radius: 15px;
   }
 
   /*box*/
 
   .box {
     background-color: rgb(245, 245, 245);
-    height: 500px;
+    height: 600px;
     left: 0;
     margin-top: 60px;
     position: absolute;
@@ -149,9 +177,9 @@
 
 .ul__categories__container {
   display: grid;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-auto-rows: 200px;
+  /* grid-auto-rows: 300px; */
   align-items: start;
 }
 
@@ -232,7 +260,8 @@
   }
 
   .h3 {
-    padding-left: 30px;
+    width: 90%;
+    margin: 30px auto;
   }
 
   .menu__container {
@@ -245,9 +274,9 @@
     padding-left: 30px !important;
   }
 
-  .item_list_container {
-    margin-bottom: 20px;
-  }
+  /* .item_list_container {
+    margin-bottom: 20px !important;
+  } */
 
   .no_tablet_desk__myShopping {
     display: block;

@@ -1,7 +1,6 @@
 import style from "./style.module.css";
 import { devices } from "styles/theme";
 import Logo from "components/global/Logo";
-import HeaderLi from "components/global/HeaderLi";
 import CartButton from "components/global/CartButton";
 import SearchBar from "components/global/SearchBar";
 import DownArrowIcon from "components/global/Icons/DownArrowIcon";
