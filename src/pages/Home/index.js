@@ -13,7 +13,7 @@ export default function Home() {
       <SaleTimerBox />
       <HomeBrands />
       <HomeCategories />
-      <HomeProducts />
+      {/* <HomeProducts /> */}
     </main>
   );
 }

@@ -13,15 +13,15 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Teclados Bluetooth",
-        slug: "/productos/teclados/teclados-bluetooth",
+        slug: "/productos?categoria=teclados&subcategoria=teclados-bluetooth",
       },
       {
         name: "Teclados Wireless",
-        slug: "/productos/teclados/teclados-wireless",
+        slug: "/productos?categoria=teclados&subcategoria=teclados-wireless",
       },
       {
         name: "Teclados USB",
-        slug: "/productos/teclados/teclados-usb",
+        slug: "/productos?categoria=teclados&subcategoria=teclados-usb",
       },
       {
         name: "Teclados Gamer",
@@ -35,19 +35,19 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Mouse Wireless",
-        slug: "/productos/mouse/mouse-wireless",
+        slug: "/productos?categoria=mouse&subcategoria=mouse-wireless",
       },
       {
         name: "Mouse USB",
-        slug: "/productos/mouse/mouse-usb",
+        slug: "/productos?categoria=mouse&subcategoria=mouse-usb",
       },
       {
         name: "Mouse Gamer",
-        slug: "/productos/mouse/mouse-gamer",
+        slug: "/productos?categoria=mouse&subcategoria=mouse-gamer",
       },
       {
         name: "Mouse Pad",
-        slug: "/productos/mouse/mouse-pad",
+        slug: "/productos?categoria=mouse&subcategoria=mouse-pad",
       },
     ],
   },
@@ -57,15 +57,15 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Audífonos p/PC",
-        slug: "/productos/audifonos/audifonos-pc",
+        slug: "/productos?categoria=audifonos&subcategoria=audifonos-pc",
       },
       {
         name: "Audífonos p/celular",
-        slug: "/productos/audifonos/audifonos-celular",
+        slug: "/productos?categoria=audifonos&subcategoria=audifonos-celular",
       },
       {
         name: "Audífonos Bluetooth",
-        slug: "/productos/audifonos/audifonos-bluetooth",
+        slug: "/productos?categoria=audifonos&subcategoria=audifonos-bluetooth",
       },
     ],
   },
@@ -75,23 +75,23 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Teclados Gamer",
-        slug: "/productos/zona-gamer/teclados-gamer",
+        slug: "/productos?categoria=zona-gamer&subcategoria=teclados-gamer",
       },
       {
         name: "Mouse Gamer",
-        slug: "/productos/zona-gamer/mouse-gamer",
+        slug: "/productos?categoria=zona-gamer&subcategoria=mouse-gamer",
       },
       {
         name: "Audífonos Gamer",
-        slug: "/productos/zona-gamer/audifonos-gamer",
+        slug: "/productos?categoria=zona-gamer&subcategoria=audifonos-gamer",
       },
       {
         name: "Micrófonos Gamer",
-        slug: "/productos/zona-gamer/microfonos-gamer",
+        slug: "/productos?categoria=zona-gamer&subcategoria=microfonos-gamer",
       },
       {
         name: "Sillas Gamer",
-        slug: "/productos/zona-gamer/sillas-gamer",
+        slug: "/productos?categoria=zona-gamer&subcategoria=sillas-gamer",
       },
     ],
   },
@@ -101,19 +101,19 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Memoria USB",
-        slug: "/productos/almacenamiento/memorias-usb",
+        slug: "/productos?categoria=almacenamiento&subcategoria=memorias-usb",
       },
       {
         name: "Memoria micro SD",
-        slug: "/productos/almacenamiento/memoria-micro-sd",
+        slug: "/productos?categoria=almacenamiento&subcategoria=memoria-micro-sd",
       },
       {
         name: "Disco Duro Externo",
-        slug: "/productos/almacenamiento/discos-duros-externos",
+        slug: "/productos?categoria=almacenamiento&subcategoria=discos-duros-externos",
       },
       {
         name: "Disco Duro SSD",
-        slug: "/productos/almacenamiento/disco-duro-ssd",
+        slug: "/productos?categoria=almacenamiento&subcategoria=disco-duro-ssd",
       },
     ],
   },
@@ -123,11 +123,11 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Parlantes para PC",
-        slug: "/productos/parlantes/parlantes-pc",
+        slug: "/productos?categoria=parlantes&subcategoria=parlantes-pc",
       },
       {
         name: "Parlantes Bluetooth",
-        slug: "/productos/parlantes/parlantes-bluetooth",
+        slug: "/productos?categoria=parlantes&subcategoria=parlantes-bluetooth",
       },
     ],
   },
@@ -137,15 +137,15 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Micrófonos p/PC",
-        slug: "/productos/microfonos/microfonos-pc",
+        slug: "/productos?categoria=microfonos&subcategoria=microfonos-pc",
       },
       {
         name: "Micrófonos p/celular",
-        slug: "/productos/microfonos/microfonos-celular",
+        slug: "/productos?categoria=microfonos&subcategoria=microfonos-celular",
       },
       {
         name: "Micrófonos p/karaoke",
-        slug: "/productos/microfonos/microfonos-karaoke",
+        slug: "/productos?categoria=microfonos&subcategoria=microfonos-karaoke",
       },
     ],
   },
@@ -155,19 +155,19 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Adaptadores Bluetooth",
-        slug: "/productos/adaptadores/adaptadores-bluetooth",
+        slug: "/productos?categoria=adaptadores&subcategoria=adaptadores-bluetooth",
       },
       {
         name: "Adaptadores de red",
-        slug: "/productos/adaptadores/adaptadores-de-red",
+        slug: "/productos?categoria=adaptadores&subcategoria=adaptadores-de-red",
       },
       {
         name: "Adaptadores de audio",
-        slug: "/productos/adaptadores/adaptadores-de-audio",
+        slug: "/productos?categoria=adaptadores&subcategoria=adaptadores-de-audio",
       },
       {
         name: "Adaptadores USB",
-        slug: "/productos/adaptadores/adaptadores-usb",
+        slug: "/productos?categoria=adaptadores&subcategoria=adaptadores-usb",
       },
     ],
   },
@@ -177,11 +177,11 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Cámaras web",
-        slug: "/productos/camaras/camaras-web",
+        slug: "/productos?categoria=camaras&subcategoria=camaras-web",
       },
       {
         name: "Cámaras de vigilancia",
-        slug: "/productos/camaras/camaras-de-vigilancia",
+        slug: "/productos?categoria=camaras&subcategoria=camaras-de-vigilancia",
       },
     ],
   },
@@ -191,11 +191,11 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Alexa",
-        slug: "/productos/smart-home/alexa",
+        slug: "/productos?categoria=smart-home&subcategoria=alexa",
       },
       {
         name: "Google Home",
-        slug: "/productos/smart-home/google-home",
+        slug: "/productos?categoria=smart-home&subcategoria=google-home",
       },
     ],
   },
@@ -205,27 +205,27 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "iPhone",
-        slug: "/productos/celulares/iphone",
+        slug: "/productos?categoria=celulares&subcategoria=iphone",
       },
       {
         name: "Samsung",
-        slug: "/productos/celulares/samsung",
+        slug: "/productos?categoria=celulares&subcategoria=samsung",
       },
       {
         name: "Xiaomi",
-        slug: "/productos/celulares/xiaomi",
+        slug: "/productos?categoria=celulares&subcategoria=xiaomi",
       },
       {
         name: "Motorola",
-        slug: "/productos/celulares/motorola",
+        slug: "/productos?categoria=celulares&subcategoria=motorola",
       },
       {
         name: "Vivo",
-        slug: "/productos/celulares/vivo",
+        slug: "/productos?categoria=celulares&subcategoria=vivo",
       },
       {
         name: "Realme",
-        slug: "/productos/celulares/realme",
+        slug: "/productos?categoria=celulares&subcategoria=realme",
       },
     ],
   },
@@ -235,31 +235,31 @@ const REAL_CATEGORIES = [
     subcategories: [
       {
         name: "Cargadores p/auto",
-        slug: "/productos/accesorios-para-celulares/cargadores",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=cargadores",
       },
       {
         name: "Cables",
-        slug: "/productos/accesorios-para-celulares/cables",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=cables",
       },
       {
         name: "Adaptadores",
-        slug: "/productos/accesorios-para-celulares/adaptadores",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=adaptadores",
       },
       {
         name: "Almacenamiento",
-        slug: "/productos/accesorios-para-celulares/almacenamiento",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=almacenamiento",
       },
       {
         name: "Baterías",
-        slug: "/productos/accesorios-para-celulares/baterias",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=baterias",
       },
       {
         name: "Carcasas / Protectores",
-        slug: "/productos/accesorios-para-celulares/carcasas-protectores",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=carcasas-protectores",
       },
       {
         name: "Sujetadores / pop sockets",
-        slug: "/productos/accesorios-para-celulares/sujetadores-pop-sockets",
+        slug: "/productos?categoria=accesorios-para-celulares&subcategoria=sujetadores-pop-sockets",
       },
     ],
   },
@@ -344,7 +344,6 @@ function Dropdown({ dropdownTitle }) {
 
   const clickHandler = () => {
     setIsOpen(!isOpen);
-    console.log("click");
   };
 
   const keyHandler = (event) => {

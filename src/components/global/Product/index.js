@@ -1,17 +1,15 @@
 import style from "./style.module.css";
-import product from "media/product.png";
-
-export default function Product() {
+export default function Product({ product }) {
+  const { name, precio, image } = product;
   return (
-    <div className={style.product}>
+    <div className={style.catalogue__product}>
       <div className={style.product__image}>
-        <img src={product} alt="product" />
+        <img src={image} alt={name} />
       </div>
-      <div className={style.product__info}>
-        <p className={style.product__categoria}>Teclado Gamer</p>
-        <h3>Redragon Mecánico Kumara K552 RGB</h3>
-        <p className={style.product__price}>S/ 450.00</p>
-      </div>
+      <h2 className={style.product__name}>
+        {name.length > 20 ? name.slice(0, 40) + "..." : name}
+      </h2>
+      <span className={style.product__price}>{`S/ ${precio}.00`}</span>
     </div>
   );
 }

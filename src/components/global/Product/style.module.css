@@ -1,15 +1,18 @@
-.product {
-    width: 200px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
+.catalogue__product {
+    margin-left: .5%;
+    margin-right: .5%;
+    margin-bottom: 14px;
+    max-width: 22%;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    padding-right: 12px;
     background-color: #fff;
 }
 
 .product__image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
     object-fit: cover;
+    border-bottom: solid 2px #bd0000;
 }
 
 .product__image img {
@@ -18,18 +21,12 @@
     object-fit: cover;
 }
 
-.product__categoria {
-    margin: 5px auto;
-    font-weight: bold;
-    color: #666;
-}
-
-.product__info h3 {
-    margin: 7px 0;
+.product__name {
+    font-weight: 400;
 }
 
 .product__price {
-    font-weight: 600;
-    color: red;
-    font-size: 18px;
+    font-weight: 700;
+font-size: 21px;
+color: #e40404;
 }
