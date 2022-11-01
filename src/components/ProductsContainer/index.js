@@ -1,33 +1,35 @@
 import style from "./style.module.css";
 import Product from "components/global/Product";
 import { useProducts } from "hooks/useProducts";
-import { useCallback, useEffect, useState } from "react";
-import { useLocation as useWouterLocation } from "wouter";
-
-export const useLocation = () => {
-  const [location, setLocation] = useWouterLocation();
-  return [location, setLocation, window.location.search];
-};
+import useQueryParams from "hooks/useQueryParams";
+import { REAL_CATEGORIES } from "assets/cats";
 
 export default function ProductsContainer() {
   const products = useProducts();
+  const params = useQueryParams();
 
-  const [, , query] = useLocation();
-
-  const [params, setParams] = useState();
-
-  const returnRouterParams = useCallback(() => {
-    const urlSearchParams = new URLSearchParams(query);
-    return Object.fromEntries(urlSearchParams);
-  }, [query]);
-
-  useEffect(() => {
-    if (query) {
-      setParams(returnRouterParams());
-    }
-  }, [query, returnRouterParams]);
   return (
     <div className={style.catalogue__products__section}>
+      <div className={style.category__title}>
+        <h2>
+          {params && params.categoria
+            ? REAL_CATEGORIES.find((item) => item.db_name === params.categoria)
+                .name
+            : "Todos los productos"}
+        </h2>
+        {params && params.subcategoria && (
+          <h2>
+            {params && params.subcategoria
+              ? REAL_CATEGORIES.find(
+                  (item) => item.db_name === params.categoria
+                ).subcategories.find(
+                  (item) => item.db_name === params.subcategoria
+                ).name
+              : null}
+          </h2>
+        )}
+      </div>
+
       <div className={style.products__container}>
         {params &&
           products

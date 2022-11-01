@@ -1,52 +1,55 @@
+import style from "./style.module.css";
 import React from "react";
-import { useProducts } from "hooks/useProducts";
 import { Link } from "wouter";
+import { REAL_CATEGORIES, BRANDS } from "assets/cats";
+import useQueryParams from "hooks/useQueryParams";
 
 function ProductsFilter() {
-  const products = useProducts();
-
-  const getCategories = () => {
-    const productsCategories = products.map((product) => product.categorias);
-    const categoriesArray = productsCategories.flat();
-    const categoriesSet = new Set(categoriesArray);
-    const categoriesArrayUnique = [...categoriesSet];
-    return categoriesArrayUnique;
-  };
-
-  const getSubcategories = (category) => {
-    const subcategories = products
-      .filter((product) => product.categorias.includes(category))
-      .map((product) => product.subcategorias);
-    const subcategoriesArray = subcategories.flat();
-    const subcategoriesSet = new Set(subcategoriesArray);
-    const subcategoriesArrayUnique = [...subcategoriesSet];
-    return subcategoriesArrayUnique;
-  };
-
+  const params = useQueryParams();
+  console.log(params);
   return (
-    <div className="filter__container">
-      {products &&
-        getCategories().map((category) => {
-          return (
-            <div key={category}>
-              <Link href={`/productos?categoria=${category}`}>
-                <h3>{category}</h3>
-              </Link>
-              <ul>
-                {getSubcategories(category).map((subcategory) => {
-                  return (
-                    <Link
-                      key={subcategory}
-                      href={`/productos?categoria=${category}&subcategoria=${subcategory}`}
+    <div className={style.filter__box}>
+      <h3>Categorias</h3>
+      <div className={style.filter__container}>
+        <ul className={style.ul__category}>
+          {params &&
+            REAL_CATEGORIES.map((item, index) => {
+              return (
+                <li className={style.category__filter__element} key={index}>
+                  <Link href={item.slug}>
+                    <button
+                      className={`${
+                        params.categoria === item.db_name
+                          ? style.filter__active
+                          : ""
+                      }`}
                     >
-                      <li>{subcategory}</li>
-                    </Link>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
+                      {item.name}
+                    </button>
+                  </Link>
+                  {params.categoria === item.db_name &&
+                    item.subcategories &&
+                    item.subcategories.length > 0 && (
+                      <ul className={style.ul__subcategory}>
+                        {item.subcategories.map((subitem, index) => {
+                          return (
+                            <li
+                              className={style.category__filter__element}
+                              key={index}
+                            >
+                              <Link href={subitem.slug}>
+                                <button>{subitem.name}</button>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                </li>
+              );
+            })}
+        </ul>
+      </div>
     </div>
   );
 }

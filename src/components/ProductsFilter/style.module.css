@@ -1,0 +1,61 @@
+.filter__box {
+    border: solid 2px #bd0000;
+    border-radius: 10px;
+    height: 400px;
+    width: 30%;
+    margin-right: 30px;
+}
+
+.filter__box h3 {
+    margin: 0;
+    background-color: #bd0000;
+    color: #fff;
+    padding: 7px;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 7px 7px 0 0;
+}
+
+.filter__container {
+    padding: 15px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.category__filter__element {
+    list-style: none;
+}
+
+.category__filter__element button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    text-align: left;
+    width: 100%;
+    padding-left: 10px;
+    transition: all 0.2s ease;
+}
+
+.category__filter__element button:hover {
+    background-color: #cecece;
+}
+
+.filter__active {
+    font-weight: 700 !important;
+}
+
+.ul__category {
+    margin: 0;
+    padding: 0;
+}
+
+.ul__subcategory {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+}

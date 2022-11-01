@@ -5,8 +5,10 @@ import { Link } from "wouter";
 export default function Logo() {
   return (
     <div className={style.container}>
-      <Link to="/">
-        <img className={style.image} src={logo} alt="logo" />
+      <Link href="/">
+        <a>
+          <img className={style.image} src={logo} alt="logo" />
+        </a>
       </Link>
     </div>
   );
