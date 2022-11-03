@@ -1,23 +1,40 @@
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 30%;
+    background: #fff;
+    padding-top: 20px;
+}
+
 .filter__box {
-    border: solid 2px #bd0000;
+    /* border: solid 2px #bd0000; */
     border-radius: 10px;
     height: 400px;
-    width: 30%;
-    margin-right: 30px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.filter__title {
+    margin-bottom: 15px;
 }
 
 .filter__box h3 {
     margin: 0;
-    background-color: #bd0000;
-    color: #fff;
+    border-bottom: solid 3px #bd0000;
+    color: #000;
     padding: 7px;
     font-size: 24px;
     font-weight: 600;
     border-radius: 7px 7px 0 0;
+    height: 40px;
+    width: 50%;
 }
 
 .filter__container {
     padding: 15px;
+    padding-top: 0;
     height: 300px;
     overflow-y: scroll;
     scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
