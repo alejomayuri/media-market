@@ -10,7 +10,7 @@ export default function Product({ product }) {
       </div>
       <p className={style.product__brand}>{marca}</p>
       <h2 className={style.product__name}>
-        {name.length > 20 ? name.slice(0, 40) + "..." : name}
+        {name.length > 20 ? name.slice(0, 25) + "..." : name}
       </h2>
       <span className={style.product__price}>{`S/ ${precio}.00`}</span>
     </div>
