@@ -57,9 +57,14 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
     .sale__timer {
+        padding-left: 0;
         flex-direction: column;
+    }
+
+    .sale__timer__header {
+        margin: 0 auto;
     }
 
     .sale__timer__header svg {
@@ -68,10 +73,11 @@
 
     .sale__timer h2 {
         font-size: 25px;
+        margin: 0;
     }
 
     .sale__timer__body {
-        margin-top: 10px;
+        margin-top: 0;
     }
 
     .number {

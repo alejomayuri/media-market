@@ -1,27 +1,26 @@
 .destacado {
-    background-color: #eae6e6;
+    background-color: #a5a5a5;
     border-radius: 10px;
-    margin: 5px;
+    margin: 4px;
+    height: auto;
+    width: 31%;
 }
 
-.destacado > a img {
+.destacado > img {
     border-radius: 10px;
     height: 100%;
     width: 100%;
     offset: 0;
 }
 
-.three {
-    height: 230px;
-    width: 390px;
+@media screen and (max-width: 768px) {
+    .destacado {
+        width: 100%;
+        display: block ruby;
+    }
 }
 
-.four {
-    height: 220px;
-    width: calc(25% - 10px);
-}
-
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .three {
         height: 154px;
         width: 260px;
@@ -41,6 +40,6 @@
         height: 278px;
         width: 345px;
         margin: 10px auto;
-        /* height: auto; */
+        
     }
-}
+} */

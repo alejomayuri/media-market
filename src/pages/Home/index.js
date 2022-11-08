@@ -7,12 +7,15 @@ import HomeProducts from "components/HomeProducts";
 
 export default function Home() {
   return (
-    <main>
-      <HomeCoupons />
-      <SaleTimerBox />
-      <HomeBrands />
-      <HomeCategories />
-      {/* <HomeProducts /> */}
-    </main>
+    <>
+      <HomeBanner />
+      <main>
+        <HomeCoupons />
+        <SaleTimerBox />
+        <HomeBrands />
+        <HomeCategories />
+        {/* <HomeProducts /> */}
+      </main>
+    </>
   );
 }

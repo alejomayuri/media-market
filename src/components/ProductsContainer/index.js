@@ -8,64 +8,12 @@ import { useEffect, useState } from "react";
 import spinner from "media/spinner.gif";
 
 export default function ProductsContainer() {
-  const products = useProducts();
   const params = useQueryParams();
+  const { productsPerCategory, productsAreChanged } = useProducts(params);
   const [sortMethod, setSortMethod] = useState("default");
 
   const PRODUCTS_PER_PAGE = 4;
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Math.ceil(products.length / PRODUCTS_PER_PAGE);
-
-  const productsPerCategory = products?.filter((product) => {
-    if (params?.categoria && params?.subcategoria && params?.marca) {
-      const categoriasProduct = product.categorias.map(
-        (categoria) => categoria
-      );
-      const subcategoriasProduct = product.subcategorias.map(
-        (subcategoria) => subcategoria
-      );
-      const marcaProduct = product.marca;
-      return (
-        categoriasProduct.includes(params?.categoria) &&
-        subcategoriasProduct.includes(params?.subcategoria) &&
-        marcaProduct.includes(params?.marca)
-      );
-    }
-    if (params?.categoria && params?.marca) {
-      const categoriasProduct = product.categorias.map(
-        (categoria) => categoria
-      );
-      const marcaProduct = product.marca;
-      return (
-        categoriasProduct.includes(params?.categoria) &&
-        marcaProduct.includes(params?.marca)
-      );
-    }
-    if (params?.categoria && params?.subcategoria) {
-      const categoriasProduct = product.categorias.map(
-        (categoria) => categoria
-      );
-      const subcategoriasProduct = product.subcategorias.map(
-        (subcategoria) => subcategoria
-      );
-      return (
-        categoriasProduct.includes(params?.categoria) &&
-        subcategoriasProduct.includes(params?.subcategoria)
-      );
-    }
-    if (params?.categoria) {
-      const categoriasProduct = product.categorias.map(
-        (categoria) => categoria
-      );
-      return categoriasProduct.includes(params?.categoria);
-    }
-    if (params?.marca) {
-      const marcaProduct = product.marca;
-      return marcaProduct.includes(params?.marca);
-    }
-    return {};
-  });
 
   const filteredProducts = productsPerCategory
     .map((product) => <Product key={product.id} product={product} />)
@@ -87,7 +35,6 @@ export default function ProductsContainer() {
     );
 
   const [pages, setPages] = useState(1);
-  // let pages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
 
   useEffect(() => {
     setPages(Math.ceil(productsPerCategory.length / PRODUCTS_PER_PAGE));
@@ -96,9 +43,6 @@ export default function ProductsContainer() {
   useEffect(() => {
     setCurrentPage(1);
   }, [params]);
-
-  console.log(pages);
-  console.log(currentPage);
 
   const filterCategoryTitle = () => {
     if (params?.categoria && params?.subcategoria) {
@@ -120,10 +64,6 @@ export default function ProductsContainer() {
     return "Todos los productos";
   };
 
-  const handleChangeSortMethod = (e) => {
-    setSortMethod(e.target.value);
-  };
-
   const filterBrandTitle = () => {
     if (params?.marca) {
       const marca = BRANDS.find((marca) => marca.db_name === params?.marca);
@@ -132,6 +72,10 @@ export default function ProductsContainer() {
     return "Todas las marcas";
   };
 
+  const handleChangeSortMethod = (e) => {
+    setSortMethod(e.target.value);
+  };
+  console.log(currentPage);
   return (
     <div className={style.catalogue__products__section}>
       <div className={style.category__header}>
@@ -150,33 +94,48 @@ export default function ProductsContainer() {
         </div>
       </div>
 
-      {products.length === 0 && (
+      {!productsAreChanged && (
         <img className={style.catalogue_spinner} src={spinner} alt="spinner" />
       )}
-
-      {products.length > 0 && (
+      {productsAreChanged && (
         <div className={style.products__container}>
-          {filteredProducts.length === 0 && (
+          {productsPerCategory.length === 0 && (
             <div className={style.no__products__container}>
               <h2>No se encontraron productos ...</h2>
             </div>
           )}
-          {products.length > 0 && filteredProducts}
+          {productsPerCategory.length > 0 && filteredProducts}
         </div>
       )}
-
-      <div className={style.pagination__container}>
-        {pages &&
-          Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
+      {productsAreChanged && productsPerCategory.length > 0 && (
+        <div className={style.pagination__container}>
+          <div className={style.pagination__container__buttons}>
             <button
-              key={page}
-              className={style.pagination__button}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          ))}
-      </div>
+              disabled={currentPage === 1}
+              className={style.pagination__arrow}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >{`<`}</button>
+            {Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                className={
+                  page === currentPage
+                    ? style.pagination__button__active
+                    : style.pagination__button
+                }
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              disabled={currentPage === pages}
+              className={style.pagination__arrow}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >{`>`}</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

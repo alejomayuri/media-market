@@ -24,6 +24,32 @@ export default function HomeBanner() {
   return (
     <div className={style.banner}>
       <img className={style.img} src={banner} alt="banner" />
+      <div className={style.banner__selector}>
+        <button
+          className={
+            banner === banner_1
+              ? style.banner__selector__button_active
+              : style.banner__selector__button
+          }
+          onClick={() => setBanner(banner_1)}
+        ></button>
+        <button
+          className={
+            banner === banner_2
+              ? style.banner__selector__button_active
+              : style.banner__selector__button
+          }
+          onClick={() => setBanner(banner_2)}
+        ></button>
+        <button
+          className={
+            banner === banner_3
+              ? style.banner__selector__button_active
+              : style.banner__selector__button
+          }
+          onClick={() => setBanner(banner_3)}
+        ></button>
+      </div>
     </div>
   );
 }

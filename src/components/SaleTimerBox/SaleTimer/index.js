@@ -6,7 +6,7 @@ export default function SaleTimer() {
   let year = new Date().getFullYear();
 
   // Format mm/dd/yyyy
-  let dateToEnd = `10/24/${year}`;
+  let dateToEnd = `11/24/${year}`;
 
   const calculateTimeLeft = () => {
     const difference = +new Date(dateToEnd) - +new Date();
@@ -72,7 +72,7 @@ export default function SaleTimer() {
     <>
       <div className={style.sale__timer}>
         <div className={style.sale__timer__header}>
-          <h2 className="sale-timer__title">Válido por tiempo limitado</h2>
+          <h2 className="sale-timer__title">Oferta por tiempo limitado</h2>
           <Timer width={"40px"} fill="#fff" />
         </div>
         <div className={style.sale__timer__body}>

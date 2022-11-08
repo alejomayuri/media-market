@@ -5,13 +5,13 @@ import Productos from "pages/Productos";
 import SiteFooter from "components/SiteFooter";
 import FixedWhatsAppButton from "components/FixedWhatsAppButton";
 import { Route } from "wouter";
-import HomeBanner from "components/HomeBanner";
+// import HomeBanner from "components/HomeBanner";
 
 function App() {
   return (
     <div className="App">
       <SiteHeader />
-      <HomeBanner />
+      {/* <HomeBanner /> */}
       <Route component={Home} path="/" />
 
       {/*Esta es la correcta*/}

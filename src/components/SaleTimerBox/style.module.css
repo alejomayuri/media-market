@@ -1,26 +1,28 @@
-.container {
+.sellTimer__container {
     background-color: #000;
     border-radius: 10px;
     margin: 0 auto;
     margin-top: 20px;
     padding-top: 20px;
-    width: 1200px;
-    padding-bottom: 5px;
+    width: 100%;
+    padding-bottom: 15px;
 }
 
 .SaleTimerBody {
     display: flex;
+    justify-content: space-evenly;
 }
 
 @media screen and (max-width: 1200px) {
-    .container {
-        padding-top: 10px;
-        width: 98%;
+    .sellTimer__container {
+        padding-bottom: 8px;
+        width: 97%;
     }
 }
 
-@media screen and (max-width: 500px) {
-    .SaleTimerBody {
-        flex-direction: column;
+@media screen and (max-width: 768px) {
+    .sellTimer__container {
+        padding-bottom: 20px;
+        padding-top: 10px;
     }
 }

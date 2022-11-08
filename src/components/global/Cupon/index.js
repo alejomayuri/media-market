@@ -5,9 +5,7 @@ export default function Cupon({ images, w }) {
   return (
     <>
       <div className={`${style.destacado} ${style[cuponWidth]}`}>
-        <a href="https://www.youtube.com/watch?v=n_iOC64Xj44">
-          <img src={images} alt="promocion" />
-        </a>
+        <img src={images} alt="Promocion" />
       </div>
     </>
   );
