@@ -17,7 +17,7 @@ function App() {
       {/*Esta es la correcta*/}
       <Route component={Productos} path="/catalogo" />
 
-      <Route component={() => <h1>404 ERROR :(</h1>} path="/404" />
+      <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
       <FixedWhatsAppButton />
       <SiteFooter />
     </div>

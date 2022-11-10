@@ -6,6 +6,7 @@ import { useDeviceWidth } from "hooks/useDeviceWidth";
 import SearchBar from "components/global/SearchBar";
 import { Link } from "wouter";
 import { REAL_CATEGORIES, BRANDS } from "assets/cats";
+import CategoriesAndSubcategoriesList from "components/global/CategoriesAndSubcategoriesList";
 
 function Dropdown({ dropdownTitle }) {
   const activatorRef = useRef(null);
@@ -82,58 +83,18 @@ function Dropdown({ dropdownTitle }) {
                 <span>Mis compras</span>
               </button>
             </div>
-            <h3 className={style.h3}>Categorias</h3>
-            <ul className={style.ul__categories__container}>
-              {REAL_CATEGORIES.map((item, index) => {
-                return (
-                  <li className={style.item_list_container} key={index}>
-                    <Link
-                      onClick={clickHandler}
-                      className={style.a__item_list}
-                      href={item.slug}
-                    >
-                      <button>{item.name}</button>
-                    </Link>
-                    {item.subcategories && item.subcategories.length > 0 && (
-                      <ul>
-                        {item.subcategories.map((subitem, index) => {
-                          return (
-                            <li className={style.item_list} key={index}>
-                              <Link
-                                onClick={clickHandler}
-                                className={style.subcategory__name}
-                                href={subitem.slug}
-                              >
-                                <button>{subitem.name}</button>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-            <h3 className={style.h3}>Marcas</h3>
-            <ul className={style.ul__categories__container}>
-              {BRANDS.map((item, index) => {
-                return (
-                  <li className={style.item_list_container} key={index}>
-                    <Link
-                      onClick={clickHandler}
-                      className={style.category__name}
-                      href={item.slug}
-                    >
-                      <button>{item.name}</button>
-                    </Link>
-                    {/* <a className={style.category__name} href={item.slug}>
-                      {item.name}
-                    </a> */}
-                  </li>
-                );
-              })}
-            </ul>
+
+            <CategoriesAndSubcategoriesList
+              data={REAL_CATEGORIES}
+              onClick={clickHandler}
+              title="Categorías"
+            />
+
+            <CategoriesAndSubcategoriesList
+              data={BRANDS}
+              onClick={clickHandler}
+              title="Marcas"
+            />
           </div>
         </div>
       </div>

@@ -45,56 +45,6 @@
     display: block;
     opacity: 1;
   }
-  
-  .item_list, .item_list_container {
-    list-style: none;
-  }
-  
-  .item_list:last-child button, .item_list_container:last-child button {
-    border-bottom: none;
-  }
-  
-  .item_list button, .item_list_container button,
-  .item_list button:link, .item_list_container button:link {
-    display: flex;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 5px;
-    transition: all 0.1s linear;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    text-align: left;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  .item_list_container > button {
-    font-size: 20px;
-    color: #000;
-  }
-  
-  .item_list button:hover, .item_list_container button:hover {
-    /* background-color: gray; */
-    color: rgb(206, 1, 1);
-  }
-
-  .item_list button {
-    color: #4b4b4b;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .item_list_container {
-    margin-bottom: 30px;
-  }
-
-  .h3 {
-    background-color: #000000;
-    padding: 5px 0 5px 10px;
-    color: #fff;
-    border-radius: 15px;
-  }
 
   /*box*/
 
@@ -106,6 +56,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    border-bottom: solid 3px #bd0000;
   }
 
   /* button */
