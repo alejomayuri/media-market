@@ -10,6 +10,7 @@ import lg from "media/lg.png";
 import amd from "media/amd.png";
 
 export default function HomeBrands() {
+  console.log("HomeBrands");
   const thisRef = useRef(null);
   const [scrollDirection, setScrollDirection] = useState("right");
   const [scrollOn, setScrollOn] = useState(true);
