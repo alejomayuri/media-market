@@ -1,8 +1,11 @@
 .brand__logo__container {
-    display: flex;
     margin: 0 auto;
-    margin-top: 20px;
-    width: 1200px;
+    width: 100%;
+    overflow-x: scroll;
+    justify-content: flex-start;
+    flex-wrap: inherit;
+    display: flex;
+    scrollbar-width: none;
 }
 
 @media screen and (max-width: 1200px) {

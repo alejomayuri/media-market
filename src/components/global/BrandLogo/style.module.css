@@ -1,20 +1,16 @@
 .brand__logo {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    padding: 25px;
-}
-
-.brand__logo img {
     -webkit-filter: grayscale(1);
     cursor: pointer;
     filter: grayscale(1);
     opacity: .8;
     transition: .3s;
-    width: 100%;
+    margin: 15px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 10px 15px;
 }
 
-.brand__logo img:hover {
+.brand__logo:hover {
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;

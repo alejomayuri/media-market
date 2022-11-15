@@ -9,7 +9,7 @@ function ProductsFilter() {
 
   const categoryFilter =
     params &&
-    REAL_CATEGORIES.map((item, index) => {
+    REAL_CATEGORIES.categories.map((item, index) => {
       return (
         <li className={style.category__filter__element} key={index}>
           <Link href={item.slug}>
@@ -62,7 +62,7 @@ function ProductsFilter() {
 
   const brandFilter =
     params &&
-    BRANDS.map((item, index) => {
+    BRANDS.brands.map((item, index) => {
       return (
         <li className={style.category__filter__element} key={index}>
           <Link href={brandFilterUrl(item)}>

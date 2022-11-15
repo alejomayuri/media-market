@@ -54,6 +54,7 @@ export default function CategoriesAndSubcategoriesList({
               onClick={onClick}
               className={style.a__item_list}
               href={item.slug}
+              key={index}
             >
               <button className={style.brand__button}>{item.name}</button>
             </Link>

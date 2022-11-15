@@ -81,6 +81,10 @@
     height: auto;
     max-height: 300px;
     margin-top: 20px;
+    background: #ff00005c;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 10px;
   }
 
   .brand__button {
@@ -101,7 +105,8 @@
   }
 
   .brand__button:hover {
-    background-color: rgb(202, 202, 202);
+    background-color: #ec5d5d;
+    border-radius: 5px;
   }
 
   @media (max-width: 1024px) {

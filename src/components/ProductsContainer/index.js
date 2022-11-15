@@ -6,6 +6,7 @@ import { BRANDS, REAL_CATEGORIES } from "assets/cats";
 import { useEffect, useState } from "react";
 
 import spinner from "media/spinner.gif";
+import SortArrows from "components/global/Icons/SortArrows";
 
 export default function ProductsContainer() {
   const params = useQueryParams();
@@ -46,7 +47,7 @@ export default function ProductsContainer() {
 
   const filterCategoryTitle = () => {
     if (params?.categoria && params?.subcategoria) {
-      const categoria = REAL_CATEGORIES.find(
+      const categoria = REAL_CATEGORIES.categories.find(
         (categoria) => categoria.db_name === params?.categoria
       );
       const subcategoria = categoria.subcategories.find(
@@ -55,7 +56,7 @@ export default function ProductsContainer() {
       return `${categoria.name} > ${subcategoria.name}`;
     }
     if (params?.categoria) {
-      const categoria = REAL_CATEGORIES.find(
+      const categoria = REAL_CATEGORIES.categories.find(
         (categoria) => categoria.db_name === params?.categoria
       );
       return categoria.name;
@@ -66,7 +67,9 @@ export default function ProductsContainer() {
 
   const filterBrandTitle = () => {
     if (params?.marca) {
-      const marca = BRANDS.find((marca) => marca.db_name === params?.marca);
+      const marca = BRANDS.brands.find(
+        (marca) => marca.db_name === params?.marca
+      );
       return marca.name;
     }
     return "Todas las marcas";
@@ -75,7 +78,15 @@ export default function ProductsContainer() {
   const handleChangeSortMethod = (e) => {
     setSortMethod(e.target.value);
   };
-  console.log(currentPage);
+
+  const goToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    goToTop();
+  }, [currentPage]);
+
   return (
     <div className={style.catalogue__products__section}>
       <div className={style.category__header}>
@@ -85,7 +96,12 @@ export default function ProductsContainer() {
         </div>
 
         <div className={style.category__sort}>
-          <label htmlFor="sort">Ordenar por:</label>
+          <label className={style.category__sort__lable_text} htmlFor="sort">
+            Ordenar por:
+          </label>
+          <label className={style.category__sort__lable_icon} htmlFor="sort">
+            <SortArrows width={25} />
+          </label>
           <select onChange={handleChangeSortMethod} name="sort" id="sort">
             <option value="default">Predeterminado</option>
             <option value="lowToHigh">Menor a mayor</option>
@@ -94,48 +110,54 @@ export default function ProductsContainer() {
         </div>
       </div>
 
-      {!productsAreChanged && (
-        <img className={style.catalogue_spinner} src={spinner} alt="spinner" />
-      )}
-      {productsAreChanged && (
-        <div className={style.products__container}>
-          {productsPerCategory.length === 0 && (
-            <div className={style.no__products__container}>
-              <h2>No se encontraron productos ...</h2>
-            </div>
-          )}
-          {productsPerCategory.length > 0 && filteredProducts}
-        </div>
-      )}
-      {productsAreChanged && productsPerCategory.length > 0 && (
-        <div className={style.pagination__container}>
-          <div className={style.pagination__container__buttons}>
-            <button
-              disabled={currentPage === 1}
-              className={style.pagination__arrow}
-              onClick={() => setCurrentPage(currentPage - 1)}
-            >{`<`}</button>
-            {Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                className={
-                  page === currentPage
-                    ? style.pagination__button__active
-                    : style.pagination__button
-                }
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </button>
-            ))}
-            <button
-              disabled={currentPage === pages}
-              className={style.pagination__arrow}
-              onClick={() => setCurrentPage(currentPage + 1)}
-            >{`>`}</button>
+      <div className={style.container}>
+        {!productsAreChanged && (
+          <img
+            className={style.catalogue_spinner}
+            src={spinner}
+            alt="spinner"
+          />
+        )}
+        {productsAreChanged && (
+          <div className={style.products__container}>
+            {productsPerCategory.length === 0 && (
+              <div className={style.no__products__container}>
+                <h2>No se encontraron productos ...</h2>
+              </div>
+            )}
+            {productsPerCategory.length > 0 && filteredProducts}
           </div>
-        </div>
-      )}
+        )}
+        {productsAreChanged && productsPerCategory.length > 0 && (
+          <div className={style.pagination__container}>
+            <div className={style.pagination__container__buttons}>
+              <button
+                disabled={currentPage === 1}
+                className={style.pagination__arrow}
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >{`<`}</button>
+              {Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={
+                    page === currentPage
+                      ? style.pagination__button__active
+                      : style.pagination__button
+                  }
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+              <button
+                disabled={currentPage === pages}
+                className={style.pagination__arrow}
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >{`>`}</button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -5,3 +5,17 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
+@media screen and (max-width: 1200px) {
+    .product__page__container {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product__page__container {
+        margin-top: 20px;
+        padding: 0 5px;
+    }
+}

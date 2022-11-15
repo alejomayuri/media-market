@@ -76,3 +76,15 @@
     padding: 0;
     margin-left: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+    .filter__box h3 {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filters {
+        display: none;
+    }
+}

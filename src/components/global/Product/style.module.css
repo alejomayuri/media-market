@@ -2,7 +2,7 @@
     margin-left: .5%;
     margin-right: .5%;
     margin-bottom: 14px;
-    max-width: 22.5%;
+    max-width: 22%;
     padding-left: 7px;
     padding-bottom: 12px;
     padding-right: 7px;
@@ -48,7 +48,7 @@
 .product__name {
     font-weight: 400;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .product__price {
@@ -79,4 +79,16 @@
     padding: 5px 10px;
     background-color: #ffff00b8;
     z-index: 999;
+}
+
+@media screen and (max-width: 1200px) {
+    .catalogue__product {
+        max-width: 29%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .catalogue__product {
+        max-width: 45%;
+    }
 }
