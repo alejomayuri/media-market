@@ -1,0 +1,62 @@
+.square__cards__container {
+    display: flex;
+    align-items: center;
+}
+
+.square__cards__container img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.square__cards__container > div {
+    width: 50%;
+    margin: 5px;
+}
+
+.sub__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub__container > div {
+    width: 100%;
+}
+
+.sub__container > div:nth-child(1) {
+    margin-bottom: 0px;
+}
+.sub__container > div:nth-child(2) {
+    margin-top: 3px;
+}
+
+.inner__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner__container > div {
+    width: 50%;
+}
+
+.inner__container > div:nth-child(1) {
+    margin-right: 5px;
+}
+
+.inner__container > div:nth-child(2) {
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 500px) {
+    .square__cards__container {
+        flex-direction: column;
+    }
+
+    .square__cards__container > div {
+        width: 90%;
+        margin: 5px;
+    }
+}

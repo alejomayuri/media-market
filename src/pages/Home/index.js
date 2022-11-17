@@ -4,6 +4,7 @@ import HomeCoupons from "components/HomeCoupons";
 import HomeBrands from "components/HomeBrands";
 import HomeCategories from "components/HomeCategories";
 import HomeProducts from "components/HomeProducts";
+import HomeSquareCards from "components/HomeSquareCards";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <HomeCoupons />
         <SaleTimerBox />
         <HomeBrands />
+        <HomeSquareCards />
         <HomeCategories />
         {/* <HomeProducts /> */}
       </main>

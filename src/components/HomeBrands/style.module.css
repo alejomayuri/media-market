@@ -1,5 +1,5 @@
 .brand__logo__container {
-    margin: 0 auto;
+    margin: 40px auto;
     width: 100%;
     overflow-x: scroll;
     justify-content: flex-start;
@@ -11,12 +11,5 @@
 @media screen and (max-width: 1200px) {
     .brand__logo__container {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .brand__logo__container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
     }
 }
