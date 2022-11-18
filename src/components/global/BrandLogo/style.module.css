@@ -5,8 +5,8 @@
     opacity: .8;
     transition: .3s;
     margin: 15px;
-    height: 45px;
-    border-radius: 10px;
+    height: 100px;
+    /* border-radius: 10px; */
     margin: 10px 15px;
 }
 
@@ -30,6 +30,9 @@
 
 @media screen and (max-width: 500px) {
     .brand__logo {
-        padding: 30px;
+        padding: 20px;
+        filter: none;
+        height: 80px;
+        margin: 5px 5px;
     }
 }

@@ -2,14 +2,97 @@ import style from "./style.module.css";
 import BrandLogo from "components/global/BrandLogo";
 import { useEffect, useRef, useState } from "react";
 
-import lt from "media/lt.png";
-import hp from "media/hp.png";
-import rd from "media/rd.png";
-import ap from "media/ap.png";
-import lg from "media/lg.png";
-import amd from "media/amd.png";
+import logitech from "media/LOGITECH.png";
+import jbl from "media/JBL.png";
+import apple from "media/APPLE.png";
+import kingston from "media/KINGSTON.png";
+import tplink from "media/TPLINK.png";
+import xiaomi from "media/XIAOMI.png";
+import samsung from "media/SAMSUNG.png";
+import motorola from "media/MOTOROLA.png";
+import huawei from "media/HUAWEI.png";
+import lenovo from "media/LENOVO.png";
+import philips from "media/PHILIPS.png";
+import sony from "media/SONY.png";
+import sandisk from "media/SANDISK.png";
+import genius from "media/GENIUS.png";
+import micronics from "media/MICRONICS.png";
+import halion from "media/HALION.png";
+import targus from "media/TARGUS.png";
+import maxell from "media/MAXELL.png";
+import skullcandy from "media/SKULLCANDY.png";
+import baseus from "media/BASEUS.png";
+import tec from "media/TEC.png";
+import klipxtreme from "media/KLIP_XTREME.png";
+import hp from "media/HP.png";
+import cybertel from "media/CYBERTEL.png";
+import xblade from "media/XBLADE.png";
+import enkore from "media/ENKORE.png";
+import hikvision from "media/HIK_VISION.png";
+import toshiba from "media/TOSHIBA.png";
+import cybercool from "media/CYBERCOOL.png";
+import iblue from "media/IBLUE.png";
+import cdp from "media/CDP.png";
+import powerlite from "media/POWER_LITE.png";
+import forza from "media/FORZA.png";
+import duracell from "media/DURACELL.png";
+import camelion from "media/CAMELION.png";
+import belkin from "media/BELKIN.png";
+import maxtron from "media/MAXTRON.png";
+import borofone from "media/BOROFONE.png";
+import moxom from "media/MOXOM.png";
+import superaz from "media/SUPERAZ.png";
+import miccell from "media/MICCELL.png";
 
 export default function HomeBrands() {
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    setBrands([
+      logitech,
+      jbl,
+      apple,
+      kingston,
+      tplink,
+      xiaomi,
+      samsung,
+      motorola,
+      huawei,
+      lenovo,
+      philips,
+      sony,
+      sandisk,
+      genius,
+      micronics,
+      halion,
+      targus,
+      maxell,
+      skullcandy,
+      baseus,
+      tec,
+      klipxtreme,
+      hp,
+      cybertel,
+      xblade,
+      enkore,
+      hikvision,
+      toshiba,
+      cybercool,
+      iblue,
+      cdp,
+      powerlite,
+      forza,
+      duracell,
+      camelion,
+      belkin,
+      maxtron,
+      borofone,
+      moxom,
+      superaz,
+      miccell,
+    ]);
+  }, []);
+
   const thisRef = useRef(null);
   const [scrollDirection, setScrollDirection] = useState("right");
   const [scrollOn, setScrollOn] = useState(true);
@@ -47,18 +130,9 @@ export default function HomeBrands() {
   return (
     <div>
       <div ref={thisRef} className={style.brand__logo__container}>
-        <BrandLogo logo={lt} />
-        <BrandLogo logo={hp} />
-        <BrandLogo logo={rd} />
-        <BrandLogo logo={ap} />
-        <BrandLogo logo={lg} />
-        <BrandLogo logo={amd} />
-        <BrandLogo logo={lt} />
-        <BrandLogo logo={hp} />
-        <BrandLogo logo={rd} />
-        <BrandLogo logo={ap} />
-        <BrandLogo logo={lg} />
-        <BrandLogo logo={rd} />
+        {brands?.map((brand, index) => (
+          <BrandLogo key={index} logo={brand} />
+        ))}
       </div>
     </div>
   );

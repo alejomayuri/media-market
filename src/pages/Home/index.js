@@ -16,7 +16,7 @@ export default function Home() {
         <HomeBrands />
         <HomeSquareCards />
         <HomeCategories />
-        {/* <HomeProducts /> */}
+        <HomeProducts />
       </main>
     </>
   );
