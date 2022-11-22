@@ -4,11 +4,12 @@
     margin-bottom: 14px;
     max-width: 22%;
     padding-left: 7px;
-    padding-bottom: 12px;
+    padding-bottom: 55px;
     padding-right: 7px;
     background-color: #fff;
     cursor: pointer;
     min-width: 155px;
+    position: relative;
 }
 
 .catalogue__product:hover {
@@ -67,7 +68,7 @@
     position: absolute;
     padding: 5px 10px;
     background-color: #00abffb8;
-    z-index: 999;
+    z-index: 9;
 }
 
 .product__feature__top {
@@ -79,7 +80,7 @@
     position: absolute;
     padding: 5px 10px;
     background-color: #ffff00b8;
-    z-index: 999;
+    z-index: 9;
 }
 
 @media screen and (max-width: 1200px) {
