@@ -1,8 +1,9 @@
 import style from "./style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartIcon from "../Icons/CartIcon";
 import Modal from "components/Modal";
 import { useCartProductsContext } from "context/CartProductsContext";
+import ModalCart from "components/ModalCart";
 
 export default function AddToCart({
   product,
@@ -12,13 +13,35 @@ export default function AddToCart({
 }) {
   const [showModal, setShowModal] = useState(false);
 
-  const { setProducts } = useCartProductsContext();
+  const { products, setProducts } = useCartProductsContext();
 
   const handleClick = () => {
     setShowModal(true);
-    setProducts((prev) => [...prev, product]);
+    handleAddToCart(product);
     // onAdd(product);
   };
+
+  const handleAddToCart = (newProduct) => {
+    if (products.find((item) => item.product === newProduct)) {
+      setProducts((prev) => {
+        return prev.map((item) => {
+          if (item.product === newProduct) {
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+            };
+          }
+          return item;
+        });
+      });
+    } else {
+      setProducts((prev) => [...prev, { product, quantity: 1 }]);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(products));
+  }, [products]);
 
   const handleClose = () => {
     setShowModal(false);
@@ -43,7 +66,11 @@ export default function AddToCart({
         </button>
       </div>
 
-      {showModal && <Modal onClose={handleClose}>Modal</Modal>}
+      {showModal && (
+        <Modal onClose={handleClose}>
+          <ModalCart onClose={handleClose} />
+        </Modal>
+      )}
     </>
   );
 }

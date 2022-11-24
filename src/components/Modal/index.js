@@ -1,10 +1,7 @@
 import style from "./style.module.css";
 import ReactDOM from "react-dom";
-import { useCartProductsContext } from "context/CartProductsContext";
 
 function Modal({ children, onClose }) {
-  const { products } = useCartProductsContext();
-  console.log(products);
   return (
     <div className={style.modal__container}>
       <div className={style.modal__content}>
