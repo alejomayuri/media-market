@@ -4,12 +4,7 @@ import ReactDOM from "react-dom";
 function Modal({ children, onClose }) {
   return (
     <div className={style.modal__container}>
-      <div className={style.modal__content}>
-        <button className={style.modal__content__btn} onClick={onClose}>
-          {/* <CloseIcon width={20} /> */}X
-        </button>
-        {children}
-      </div>
+      <div className={style.modal__content}>{children}</div>
     </div>
   );
 }

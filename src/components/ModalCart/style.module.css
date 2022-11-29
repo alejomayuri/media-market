@@ -1,0 +1,53 @@
+.cart__title {
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #e2e2e2;
+    display: flex;
+    align-items: center;
+}
+
+.products__container {
+    height: 440px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.noProducts__message {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.goToTheCart {
+    background: #bd0000;
+    padding: 8px 15px;
+    border-radius: 99px;
+    border: none;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.stayHere {
+    margin-top: 30px;
+    border: solid 2px #bd0000;
+    padding: 8px 15px;
+    border-radius: 99px;
+    background-color: transparent;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    height: 42px;
+}
+
+.modal__footer {
+    height: 42px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}

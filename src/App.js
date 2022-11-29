@@ -2,6 +2,7 @@ import "App.css";
 import SiteHeader from "components/SiteHeader";
 import Home from "pages/Home";
 import Productos from "pages/Productos";
+import Cart from "pages/Cart";
 import SiteFooter from "components/SiteFooter";
 import FixedWhatsAppButton from "components/FixedWhatsAppButton";
 import { Route } from "wouter";
@@ -19,7 +20,10 @@ function App() {
         {/*Esta es la correcta*/}
         <Route component={Productos} path="/catalogo" />
 
+        <Route component={Cart} path="/carrito" />
+
         <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
+
         <FixedWhatsAppButton />
         <SiteFooter />
       </div>

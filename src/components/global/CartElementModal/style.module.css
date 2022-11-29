@@ -1,0 +1,97 @@
+.element__container {
+    display: flex;
+    margin-bottom: 10px;
+    background: #e2e2e2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.image__container {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.image__container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info__container {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    width: 420px;
+}
+
+.info__container h3, .info__container p {
+    margin: 0;
+}
+
+.info__container h3 {
+    font-size: 16px;
+    color: #2c2c2c;
+}
+
+.info__container p {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #454545;
+}
+
+.info__container span {
+    font-size: 15px;
+    font-weight: 600;
+    color: #161616;
+}
+
+.quantity__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.numberBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 130px;
+}
+
+.numberBox span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #161616;
+}
+
+.numberBox__button {
+    background: #e2e2e2;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #161616;
+    font-weight: 500;
+    height: 27px;
+    width: 27px;
+    border: solid 1px #bd0000;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+}
+
+.deleteButton {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    background: rgba(255, 255, 255, 0.44);
+    border: none;
+    padding: 7px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 1.1px;
+}
