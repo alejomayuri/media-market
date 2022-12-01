@@ -24,7 +24,7 @@ import skullcandy from "media/SKULLCANDY.png";
 import baseus from "media/BASEUS.png";
 import tec from "media/TEC.png";
 import klipxtreme from "media/KLIP_XTREME.png";
-import hp from "media/HP.png";
+import hp from "media/HP_img.png";
 import cybertel from "media/CYBERTEL.png";
 import xblade from "media/XBLADE.png";
 import enkore from "media/ENKORE.png";
