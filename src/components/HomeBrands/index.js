@@ -1,6 +1,6 @@
 import style from "./style.module.css";
 import BrandLogo from "components/global/BrandLogo";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import logitech from "media/LOGITECH.png";
 import jbl from "media/JBL.png";
@@ -96,7 +96,7 @@ export default function HomeBrands() {
   const thisRef = useRef(null);
   const [scrollDirection, setScrollDirection] = useState("right");
   const [scrollOn, setScrollOn] = useState(true);
-  const autoScroll = () => {
+  const autoScroll = useCallback(() => {
     if (scrollDirection === "right" && scrollOn) {
       thisRef.current.scrollLeft += 1;
     }
@@ -119,14 +119,14 @@ export default function HomeBrands() {
     thisRef.current.addEventListener("mouseleave", () => {
       setScrollOn(true);
     });
-  };
+  }, [scrollDirection, scrollOn]);
 
   useEffect(() => {
     const interval = setInterval(autoScroll, 1);
     return () => {
       clearInterval(interval);
     };
-  }, [scrollDirection, scrollOn]);
+  }, [scrollDirection, scrollOn, autoScroll]);
   return (
     <div>
       <div ref={thisRef} className={style.brand__logo__container}>

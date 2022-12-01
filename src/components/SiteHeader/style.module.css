@@ -9,7 +9,7 @@
 .header > div {
     display: flex;
     height: 100%;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .ul {

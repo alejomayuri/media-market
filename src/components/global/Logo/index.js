@@ -6,9 +6,7 @@ export default function Logo() {
   return (
     <div className={style.container}>
       <Link href="/">
-        <a>
-          <img className={style.image} src={logo} alt="logo" />
-        </a>
+        <img className={style.image} src={logo} alt="logo" />
       </Link>
     </div>
   );

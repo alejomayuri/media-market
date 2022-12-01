@@ -4,7 +4,6 @@ import { devices } from "styles/theme";
 import MenuIcon from "components/global/Icons/MenuIcon";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
 import SearchBar from "components/global/SearchBar";
-import { Link } from "wouter";
 import { REAL_CATEGORIES, BRANDS } from "assets/cats";
 import CategoriesAndSubcategoriesList from "components/global/CategoriesAndSubcategoriesList";
 
