@@ -6,13 +6,16 @@
     left: 0;
     right: 0;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal__content {
     background-color: #f0f0f0;
     width: 720px;
     padding: 10px 20px;
-    height: 60vh;
+    height: 600px;
     margin: 20vh auto;
     position: relative;
 }
@@ -20,4 +23,11 @@
 .modal__content__btn {
     display: block;
     margin-bottom: 32px;
+}
+
+@media screen and (max-width: 768px) {
+    .modal__content {
+        width: 350px;
+        box-sizing: border-box;
+    }
 }

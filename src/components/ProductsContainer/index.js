@@ -12,7 +12,7 @@ export default function ProductsContainer() {
   const params = useQueryParams();
   const { productsPerCategory, productsAreChanged } = useProducts(params);
   const [sortMethod, setSortMethod] = useState("default");
-  console.log(productsPerCategory);
+  // console.log(productsPerCategory);
   const PRODUCTS_PER_PAGE = 4;
   const [currentPage, setCurrentPage] = useState(1);
 

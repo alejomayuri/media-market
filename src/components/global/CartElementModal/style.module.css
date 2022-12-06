@@ -95,3 +95,29 @@
     cursor: pointer;
     letter-spacing: 1.1px;
 }
+
+@media screen and (max-width: 768px) {
+    .element__container {
+        flex-direction: column;
+        width: 280px;
+    }
+
+    .info__container {
+        width: 90%;
+        margin-top: 10px;
+    }
+
+    .quantity__container {
+        margin-top: 20px;
+        width: 200px;
+    }
+
+    .numberBox {
+        margin-bottom: 23px;
+    }
+
+    .deleteButton {
+        margin: 0;
+        width: 130px;
+    }
+}

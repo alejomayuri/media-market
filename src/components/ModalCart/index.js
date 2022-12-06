@@ -7,9 +7,9 @@ import CartIcon from "components/global/Icons/CartIcon";
 
 export default function ModalCart({ onClose }) {
   const { products } = useCartProductsContext();
-  // console.log(products);
+
   const { myCart } = useCartProducts({ productsInTheCart: products });
-  console.log("myCart", myCart);
+  
   return (
     <div>
       <h3 className={style.cart__title}>
