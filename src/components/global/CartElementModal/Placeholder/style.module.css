@@ -1,0 +1,54 @@
+.placeholder {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.placeholder__box {
+    max-width: 520px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.placeholder__image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    background-color: rgb(222, 222, 222);
+}
+
+.placeholder__info {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 420px;
+    width: 100%;
+}
+
+.placeholder__info__name {
+    max-width: 300px;
+    width: 100%;
+    height: 20px;
+    background-color: rgb(222, 222, 222);
+}
+
+.placeholder__info__marca {
+    max-width: 200px;
+    width: 100%;
+    height: 20px;
+    background-color: rgb(222, 222, 222);
+}
+
+.placeholder__info__price {
+    width: 100px;
+    height: 20px;
+    background-color: rgb(222, 222, 222);
+}
+
+@media screen and (max-width: 768px) {
+    .placeholder__info {
+        width: 60%;
+    }
+}

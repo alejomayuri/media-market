@@ -7,6 +7,7 @@ import SiteFooter from "components/SiteFooter";
 import FixedWhatsAppButton from "components/FixedWhatsAppButton";
 import { Route } from "wouter";
 import { CartProductsProvider } from "context/CartProductsContext";
+import Product from "pages/Product";
 // import HomeBanner from "components/HomeBanner";
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         <Route component={Productos} path="/catalogo" />
 
         <Route component={Cart} path="/carrito" />
+
+        <Route component={Product} path="/productos/:id" />
 
         <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
 

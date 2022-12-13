@@ -26,6 +26,11 @@ export const REAL_CATEGORIES = {
           slug: "/catalogo?categoria=teclados&subcategoria=teclados-gamer",
           db_name: "teclados-gamer",
         },
+        {
+          name: "Pac Teclado + Mouse",
+          slug: "/catalogo?categoria=teclados&subcategoria=pac-teclado-mouse",
+          db_name: "pac-teclado-mouse",
+        },
       ],
     },
     {
@@ -52,6 +57,11 @@ export const REAL_CATEGORIES = {
           name: "Mouse Pad",
           slug: "/catalogo?categoria=mouse&subcategoria=mouse-pad",
           db_name: "mouse-pad",
+        },
+        {
+          name: "Pac Teclado + Mouse",
+          slug: "/catalogo?categoria=mouse&subcategoria=pac-teclado-mouse",
+          db_name: "pac-teclado-mouse",
         },
       ],
     },

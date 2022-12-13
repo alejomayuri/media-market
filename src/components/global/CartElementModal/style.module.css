@@ -1,10 +1,12 @@
 .element__container {
     display: flex;
     margin-bottom: 10px;
-    background: #e2e2e2;
+    background: #fff;
     padding: 10px;
     border-radius: 5px;
     margin-right: 10px;
+    justify-content: space-between;
+    height: 140px;
 }
 
 .image__container {
@@ -75,31 +77,40 @@
     font-weight: 500;
     height: 27px;
     width: 27px;
-    border: solid 1px #bd0000;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 19px;
+    transition: ease 0.3s all;
 }
 
 .deleteButton {
     width: 80%;
     margin: 0 auto;
     display: block;
-    background: rgba(255, 255, 255, 0.44);
+    background: rgb(233, 233, 233);
     border: none;
     padding: 7px;
     border-radius: 20px;
     font-size: 14px;
     cursor: pointer;
     letter-spacing: 1.1px;
+    transition: ease 0.3s all;
+}
+
+.numberBox__button:hover, .deleteButton:hover {
+    background: #cbcbcb;
 }
 
 @media screen and (max-width: 768px) {
     .element__container {
         flex-direction: column;
-        width: 280px;
+        /* width: 280px; */
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+        height: auto;
     }
 
     .info__container {

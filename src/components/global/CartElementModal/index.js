@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import { useCartProductsContext } from "context/CartProductsContext";
+import Placeholder from "./Placeholder";
 
 export default function CartElementModal({ element }) {
   let productImg = null;
@@ -29,7 +30,7 @@ export default function CartElementModal({ element }) {
 
   if (element.product) {
     const { product } = element;
-    productImg = <img src={product.image} alt={product.name} />;
+    productImg = <img src={product.image[0]} alt={product.name} />;
     productInfo = (
       <>
         <h3>{product.name}</h3>
@@ -41,8 +42,17 @@ export default function CartElementModal({ element }) {
 
   return (
     <article className={style.element__container}>
-      <div className={style.image__container}>{productImg}</div>
-      <div className={style.info__container}>{productInfo}</div>
+      {
+        element.product
+        ? (
+          <>
+            <div className={style.image__container}>{productImg}</div>
+            <div className={style.info__container}>{productInfo}</div>
+          </>
+        )
+        : <Placeholder />
+      }
+      
       <div className={style.quantity__container}>
         <div className={style.numberBox}>
           <button

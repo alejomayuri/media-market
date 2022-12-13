@@ -1,10 +1,15 @@
 import style from "./style.module.css";
 import { useState } from "react";
 import AddToCart from "../AddToCart";
+import { Link } from "wouter";
 
 export default function Product({ product }) {
   const { name, precio, image, marca, nuevo, top, id } = product;
   const [isHover, setIsHover] = useState(false);
+  let formatPrice = new Intl.NumberFormat("es-PE", {
+    style: "currency",
+    currency: "PEN",
+  });
 
   return (
     <div
@@ -15,13 +20,19 @@ export default function Product({ product }) {
       <div className={style.product__image}>
         {nuevo && <p className={style.product__feature__new}>Nuevo</p>}
         {top && <p className={style.product__feature__top}>Top ventas</p>}
-        <img src={image} alt={name} />
+        <Link href={`/productos/${id}`}>
+          <img src={image[0]} alt={name} />
+        </Link>
       </div>
       <p className={style.product__brand}>{marca}</p>
+      <Link href={`/productos/${id}`}>
       <h2 className={style.product__name}>
-        {name.length > 20 ? name.slice(0, 25) + "..." : name}
+          {name.length > 20 ? name.slice(0, 30) + "..." : name}
       </h2>
-      <span className={style.product__price}>{`S/ ${precio}.00`}</span>
+      </Link>
+      <span className={style.product__price}>{
+        formatPrice.format(precio)
+      }</span>
       <AddToCart product={id} showButton={isHover} setShowButton={setIsHover} />
     </div>
   );
