@@ -48,36 +48,38 @@ export default function CartElementModal({ element }) {
           <>
             <div className={style.image__container}>{productImg}</div>
             <div className={style.info__container}>{productInfo}</div>
+
+            <div className={style.quantity__container}>
+            <div className={style.numberBox}>
+              <button
+                className={style.numberBox__button}
+                disabled={element.quantity === 1}
+                value={element.quantity - 1}
+                onClick={handleQuantity}
+              >
+                -
+              </button>
+              <span>{element?.quantity}</span>
+              <button
+                className={style.numberBox__button}
+                disabled={element.quantity === 10}
+                value={element.quantity + 1}
+                onClick={handleQuantity}
+              >
+                +
+              </button>
+            </div>
+
+            <button className={style.deleteButton} onClick={handleDelete}>
+              Eliminar
+            </button>
+          </div>
           </>
         )
         : <Placeholder />
       }
       
-      <div className={style.quantity__container}>
-        <div className={style.numberBox}>
-          <button
-            className={style.numberBox__button}
-            disabled={element.quantity === 1}
-            value={element.quantity - 1}
-            onClick={handleQuantity}
-          >
-            -
-          </button>
-          <span>{element?.quantity}</span>
-          <button
-            className={style.numberBox__button}
-            disabled={element.quantity === 10}
-            value={element.quantity + 1}
-            onClick={handleQuantity}
-          >
-            +
-          </button>
-        </div>
-
-        <button className={style.deleteButton} onClick={handleDelete}>
-          Eliminar
-        </button>
-      </div>
+      
     </article>
   );
 }

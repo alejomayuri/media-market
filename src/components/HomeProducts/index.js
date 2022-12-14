@@ -4,17 +4,12 @@ import { useFeaturedProducts } from "hooks/useFeaturedProducts";
 
 export default function HomeProducts() {
   const featuredProducts = useFeaturedProducts();
-  console.log(featuredProducts);
   return (
     <div>
       <div className={style.home__products}>
         <h2 className={style.h2}>Productos destacados</h2>
         <div className={style.home__products__container}>
-          {/* <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product /> */}
+          
           {featuredProducts?.map((product) => (
             <Product key={product.id} product={product} />
           ))}

@@ -7,8 +7,8 @@ import ModalCart from "components/ModalCart";
 
 export default function AddToCart({
   product,
-  onAdd,
-  showButton,
+  onAdd = 1,
+  showButton = true,
   setShowButton,
 }) {
   const [showModal, setShowModal] = useState(false);
@@ -28,14 +28,14 @@ export default function AddToCart({
           if (item.product === newProduct) {
             return {
               ...item,
-              quantity: item.quantity + 1,
+              quantity: item.quantity + onAdd,
             };
           }
           return item;
         });
       });
     } else {
-      setProducts((prev) => [...prev, { product, quantity: 1 }]);
+      setProducts((prev) => [...prev, { product, quantity: onAdd }]);
     }
   };
 
@@ -53,9 +53,7 @@ export default function AddToCart({
   return (
     <>
       <div
-        className={`${style.add__button__container} 
-        ${showButtonClass}
-        `}
+        className={`${style.add__button__container}  ${showButtonClass}`}
       >
         <button onClick={handleClick} className={style.add__button}>
           <CartIcon width={20} />
