@@ -20,7 +20,7 @@
     width: 100%;
     object-fit: cover;
     border-bottom: solid 2px #bd0000;
-    height: 217px;
+    /* height: 217px; */
     overflow: hidden;
     position: relative;
     background-color: #eee;

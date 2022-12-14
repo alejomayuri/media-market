@@ -1,6 +1,7 @@
 import style from "./style.module.css";
 import { useCartProductsContext } from "context/CartProductsContext";
 import Placeholder from "./Placeholder";
+import { formatPrice } from "utils/formatPrice";
 
 export default function CartElementModal({ element }) {
   let productImg = null;
@@ -30,12 +31,13 @@ export default function CartElementModal({ element }) {
 
   if (element.product) {
     const { product } = element;
+    let price = product ? formatPrice(product.precio) : null;
     productImg = <img src={product.image[0]} alt={product.name} />;
     productInfo = (
       <>
         <h3>{product.name}</h3>
         <p>{product.marca}</p>
-        <span>{`S/ ${product.precio}`}</span>
+        <span>{price}</span>
       </>
     );
   }

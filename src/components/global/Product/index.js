@@ -2,14 +2,13 @@ import style from "./style.module.css";
 import { useState } from "react";
 import AddToCart from "../AddToCart";
 import { Link } from "wouter";
+import { formatPrice } from "utils/formatPrice";
 
 export default function Product({ product }) {
   const { name, precio, image, marca, nuevo, top, id } = product;
   const [isHover, setIsHover] = useState(false);
-  let formatPrice = new Intl.NumberFormat("es-PE", {
-    style: "currency",
-    currency: "PEN",
-  });
+
+  let price = product ? formatPrice(precio) : null;
 
   return (
     <div
@@ -27,12 +26,10 @@ export default function Product({ product }) {
       <p className={style.product__brand}>{marca}</p>
       <Link href={`/productos/${id}`}>
       <h2 className={style.product__name}>
-          {name.length > 20 ? name.slice(0, 30) + "..." : name}
+          {name.length > 20 ? name.slice(0, 25) + "..." : name}
       </h2>
       </Link>
-      <span className={style.product__price}>{
-        formatPrice.format(precio)
-      }</span>
+      <span className={style.product__price}>{price}</span>
       <AddToCart product={id} showButton={isHover} setShowButton={setIsHover} />
     </div>
   );

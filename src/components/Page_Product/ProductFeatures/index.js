@@ -2,14 +2,9 @@ import style from "./style.module.css";
 import Features from "./Features";
 
 export default function ProductFeatures({ data }) {
-    // let name = null;
-    // let features = [];
-
-    // console.log(data)
-   
-    
     return (
         <div className={style.container}>
+            <h2 className={style.product__title}>Características destacadas</h2>
             <div className={style.product__features}>
                 {
                     data && data.map((item, index) => {

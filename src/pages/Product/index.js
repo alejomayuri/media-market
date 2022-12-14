@@ -3,10 +3,12 @@ import { useEffect, useState } from "react"
 import { useSingleProduct } from "hooks/useSingleProduct"
 import MainProductContent from "components/Page_Product/MainProductContent"
 import ProductFeatures from "components/Page_Product/ProductFeatures"
+import ProductDetail from "components/Page_Product/ProductDetail"
+import ProductDescription from "components/Page_Product/ProductDescription"
 
 export default function Product() {
     const [, params] = useRoute("/productos/:id")
-    const [productId, setProductId] = useState()
+    const [productId, setProductId] = useState("")
     const { product, loading } = useSingleProduct(productId)
 
     let images = [];
@@ -15,6 +17,8 @@ export default function Product() {
     let price = null;
     let id = null;
     let productFeatures = null;
+    let productDetails = null;
+    let description = null;
 
     if (product) {
         images = product.image
@@ -23,6 +27,8 @@ export default function Product() {
         price = product.precio
         id = product.id
         productFeatures = product.caracteristicasDestacadas
+        productDetails = product.detalles
+        description = product.descripcion
     }
 
     useEffect(() => {
@@ -41,6 +47,8 @@ export default function Product() {
                     id={id}
                 />
                 <ProductFeatures data={productFeatures} />
+                <ProductDetail sku={productId} data={productDetails} />
+                <ProductDescription description={description} />
             </main>
         </>
     )

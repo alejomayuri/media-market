@@ -1,10 +1,11 @@
 import style from './style.module.css'
 import { useEffect, useState } from 'react'
 import AddToCart from "components/global/AddToCart"
+import { formatPrice } from "utils/formatPrice";
 
 export default function MainProductContent({images, loading, title, brand, price, id}) {
-    const [mainImage, setMainImage] = useState()
-    const [miniImages, setMiniImages] = useState()
+    const [mainImage, setMainImage] = useState("")
+    const [miniImages, setMiniImages] = useState("")
     const [cuantity, setCuantity] = useState(1)
     
     useEffect(() => {
@@ -17,6 +18,8 @@ export default function MainProductContent({images, loading, title, brand, price
     const handleChabgeMainImage = (e) => {
         setMainImage(e.target.src)
     }
+
+    let priceProduct = price ? formatPrice(price) : null;
 
     return (
         <div className={style.container}>
@@ -39,10 +42,7 @@ export default function MainProductContent({images, loading, title, brand, price
                 <h1>{title}</h1>
                 <span>
                     <bdi>
-                        {/* Esto hay que arreglar */}
-                        <span>S/</span>
-                        {price}
-                        <span>0 </span>
+                        {priceProduct}
                     </bdi>
                 </span>
                 <div className={style.selectQuantity}>
