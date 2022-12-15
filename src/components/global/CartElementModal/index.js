@@ -1,13 +1,15 @@
-import style from "./style.module.css";
-import { useCartProductsContext } from "context/CartProductsContext";
-import Placeholder from "./Placeholder";
-import { formatPrice } from "utils/formatPrice";
+import style from "./style.module.css"
+import { useCartProductsContext } from "context/CartProductsContext"
+import Placeholder from "./Placeholder"
+import { formatPrice } from "utils/formatPrice"
+import { Link } from "wouter"
+import Image from "../Image"
 
 export default function CartElementModal({ element }) {
-  let productImg = null;
-  let productInfo = null;
+  let productImg = null
+  let productInfo = null
 
-  const { setProducts } = useCartProductsContext();
+  const { setProducts } = useCartProductsContext()
 
   const handleQuantity = (e) => {
     setProducts((prev) => {
@@ -16,30 +18,37 @@ export default function CartElementModal({ element }) {
           return {
             ...item,
             quantity: parseInt(e.target.value),
-          };
+          }
         }
-        return item;
-      });
-    });
-  };
+        return item
+      })
+    })
+  }
 
   const handleDelete = () => {
     setProducts((prev) => {
-      return prev.filter((item) => item.product !== element.product.id);
-    });
-  };
+      return prev.filter((item) => item.product !== element.product.id)
+    })
+  }
 
   if (element.product) {
-    const { product } = element;
-    let price = product ? formatPrice(product.precio) : null;
-    productImg = <img src={product.image[0]} alt={product.name} />;
+    const { product } = element
+    let price = product ? formatPrice(product.precio) : null
+    let src = product ? product.image[0] : null
+    let name = product ? product.name : null
+    let brand = product ? product.marca : null
+
+    productImg = <Image src={src} alt={name} />
+
     productInfo = (
       <>
-        <h3>{product.name}</h3>
-        <p>{product.marca}</p>
+        <Link to={`/productos/${product.id}`}>
+          <h3>{name}</h3>
+        </Link>
+        <p>{brand}</p>
         <span>{price}</span>
       </>
-    );
+    )
   }
 
   return (
@@ -48,7 +57,12 @@ export default function CartElementModal({ element }) {
         element.product
         ? (
           <>
-            <div className={style.image__container}>{productImg}</div>
+            <Link to={`/productos/${element?.product?.id}`}>
+              <div className={style.image__container}>
+                {productImg}
+              </div>
+            </Link>
+
             <div className={style.info__container}>{productInfo}</div>
 
             <div className={style.quantity__container}>
@@ -80,8 +94,6 @@ export default function CartElementModal({ element }) {
         )
         : <Placeholder />
       }
-      
-      
     </article>
-  );
+  )
 }

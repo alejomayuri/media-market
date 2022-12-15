@@ -5,11 +5,14 @@ import { useCartProducts } from "hooks/useCartProducts";
 import CartElementModal from "components/global/CartElementModal";
 import CartIcon from "components/global/Icons/CartIcon";
 import { Link } from "wouter";
+import { formatPrice } from "utils/formatPrice";
 
 export default function Cart() {
   const { products } = useCartProductsContext();
   const { myCart, totalPrice } = useCartProducts({ productsInTheCart: products });
   const [ elementsInCart, setElementsInCart ] = useState(0);
+  
+  let total = totalPrice ? formatPrice(totalPrice) : 0;
 
   useEffect(() => {
     let total = 0;
@@ -57,7 +60,7 @@ export default function Cart() {
             <h3>
               {
                 isNaN(totalPrice)===false
-                ? `Total: S/ ${totalPrice}`
+                ? `Total: ${total}`
                 : "Total: S/ 0.00 "
               }
             </h3>

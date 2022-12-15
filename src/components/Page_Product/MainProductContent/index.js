@@ -2,6 +2,7 @@ import style from './style.module.css'
 import { useEffect, useState } from 'react'
 import AddToCart from "components/global/AddToCart"
 import { formatPrice } from "utils/formatPrice";
+import Image from "components/global/Image";
 
 export default function MainProductContent({images, loading, title, brand, price, id}) {
     const [mainImage, setMainImage] = useState("")
@@ -27,13 +28,14 @@ export default function MainProductContent({images, loading, title, brand, price
                 <div className={style.miniImg__container}>
                     {miniImages && miniImages.map( image => (
                         <div key={image} onClick={handleChabgeMainImage} className={`${style.miniImg} ${mainImage === image ? style.selected : ``}`}>
-                            <img src={image} alt="miniImage" />
+                            {/* <img src={image} alt="miniImage" /> */}
+                            <Image src={image} alt={title} />
                         </div>
                     ))}
                 </div>
                 <div className={style.mainImg}>
                     {
-                        loading ? <p>Cargando...</p> : <img src={mainImage} alt="mainImage" />
+                        loading ? <p>Cargando...</p> : <Image src={mainImage} alt={title} />
                     }
                 </div>  
             </div>
