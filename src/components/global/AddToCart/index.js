@@ -10,6 +10,8 @@ export default function AddToCart({
   onAdd = 1,
   showButton = true,
   setShowButton,
+  bigBtn = false,
+  disabled
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -53,10 +55,10 @@ export default function AddToCart({
   return (
     <>
       <div
-        className={`${style.add__button__container}  ${showButtonClass}`}
+        className={`${style.add__button__container}  ${showButtonClass} ${bigBtn ? style.add__button__container_big__btn : ""}`}
       >
-        <button onClick={handleClick} className={style.add__button}>
-          <CartIcon width={20} />
+        <button disabled={disabled} onClick={handleClick} className={`${style.add__button} ${bigBtn ? style.add__button_big__btn : ""}`}>
+          {!bigBtn && <CartIcon width={20} />}
           <span className={style.add__button__text__desktop}>
             Agregar al carrito
           </span>

@@ -1,0 +1,39 @@
+.container {
+    padding: 15px;
+    background: #fff;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+.product__title {
+    font-size: 22px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #bd0000;
+}
+
+.product__feature {
+    display: flex;
+    padding: 0 15px;
+}
+
+.product__feature h3 {
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    width: 50%;
+}
+
+.product__feature ul {
+    padding: 0;
+    width: 50%;
+}
+
+.product__feature ul li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+.product__feature__even {
+    background: #f5f5f5;
+}

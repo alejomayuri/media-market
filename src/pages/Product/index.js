@@ -19,6 +19,8 @@ export default function Product() {
     let productFeatures = null;
     let productDetails = null;
     let description = null;
+    let stock = null;
+    let noStockSell = null;
 
     if (product) {
         images = product.image
@@ -26,9 +28,11 @@ export default function Product() {
         brand = product.marca
         price = product.precio
         id = product.id
+        stock = product.stock
         productFeatures = product.caracteristicasDestacadas
         productDetails = product.detalles
         description = product.descripcion
+        noStockSell = product.ventaSinStock
     }
 
     useEffect(() => {
@@ -45,6 +49,8 @@ export default function Product() {
                     price={price}
                     loading={loading}
                     id={id}
+                    stock={stock}
+                    noStockSell={noStockSell}
                 />
                 <ProductFeatures data={productFeatures} />
                 <ProductDetail sku={productId} data={productDetails} />

@@ -6,6 +6,10 @@
     z-index: 9;   
 }
 
+.add__button__container_big__btn {
+    height: 100%;
+    position: initial;
+}
 
 .add__button {
     display: flex;
@@ -23,8 +27,22 @@
     transition: all 0.2s ease-out;
 }
 
+.add__button_big__btn {
+    height: 100%;
+    border-radius: 0;
+    padding: 10px 40px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
 .add__button:hover {
     background-color: rgb(206, 1, 1);
+}
+
+.add__button_big__btn:disabled {
+    background-color: rgb(255, 191, 191);
 }
 
 .show {
@@ -43,13 +61,12 @@
     display: none;
 }
 
+
 @media screen and (max-width: 1024px) {
     .show__none {
         display: block;
     }
-}
 
-@media screen and (max-width: 1024px) {
     .add__button__text__desktop {
         display: none;
     }
@@ -62,3 +79,11 @@
         padding: 10px 25px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .add__button_big__btn {
+        margin: 0;
+        width: 100%;
+    }
+}
+

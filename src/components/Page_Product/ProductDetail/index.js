@@ -1,8 +1,10 @@
 import style from "./style.module.css";
 
 export default function ProductDetail ({ data, sku }) {
+    const isEven = (num) => !(num % 2);
+
     return (
-        <div className={style.container}>
+        <section className={style.container}>
             <h2 className={style.product__title}>Detalle del producto</h2>
             <div className={style.product__features}>
                 <div className={style.product__feature}>
@@ -14,7 +16,13 @@ export default function ProductDetail ({ data, sku }) {
                 {
                     data && data.map((item, index) => {
                         return (
-                            <div key={index} className={style.product__feature}>
+                            <div key={index} className={`
+                                    ${style.product__feature}
+                                    ${isEven(index) 
+                                        ? style.product__feature__even 
+                                        : ""
+                                    }
+                                `}>
                                 <h3>{item.name}</h3>
                                 <p>
                                     {item.content}
@@ -24,6 +32,6 @@ export default function ProductDetail ({ data, sku }) {
                     })
                 }  
             </div>
-        </div>
+        </section>
     )
 }

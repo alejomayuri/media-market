@@ -22,9 +22,7 @@ export default function Product({ product }) {
         <div className={style.product__image}>
           {nuevo && <p className={style.product__feature__new}>Nuevo</p>}
           {top && <p className={style.product__feature__top}>Top ventas</p>}
-          
             <Image src={src} alt={name} />
-          
         </div>
       </Link>
       <p className={style.product__brand}>{marca}</p>
