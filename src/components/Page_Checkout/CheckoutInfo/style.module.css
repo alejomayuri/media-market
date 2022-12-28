@@ -1,0 +1,48 @@
+.container {
+    width: 40%;
+}
+
+.container__info {
+    position: sticky;
+    padding: 5px;
+    background-color: #ffffff;
+    margin-top: 20px;
+    top: 20px;
+}
+
+.elementInCartContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-bottom: solid 1px #535353;
+}
+
+.productQuantity {
+    font-size: 14px;
+    font-weight: 600;
+    color: #535353;
+}
+
+.productName {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.pricePerProduct {
+    margin-left: 15px;
+}
+
+.pricePerProduct span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.productsConteiner {
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
