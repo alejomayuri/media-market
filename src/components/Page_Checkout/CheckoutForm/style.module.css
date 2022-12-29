@@ -107,3 +107,14 @@
 .submit_button:hover {
     background: #ff0000;
 }
+
+.infoText {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 10px;
+    background-color: #fff3b3;;
+    padding: 20px;
+    border: solid 1px #c4c10b;
+    box-sizing: border-box;
+    border-radius: 5px;
+}

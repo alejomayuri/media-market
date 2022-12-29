@@ -46,3 +46,15 @@
     scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
     scrollbar-width: thin;
 }
+
+.flexShowPrices {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.flexShowPrices span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
