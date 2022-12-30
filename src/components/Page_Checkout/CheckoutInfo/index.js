@@ -1,24 +1,10 @@
 import style from "./style.module.css";
 import { formatPrice } from "utils/formatPrice"
 
-export default function CheckoutInfo ({ myCart, loading, despachoDelibery }) {
+
+export default function CheckoutInfo ({ myCart, loading, subtotal, delivery, total }) {
 
     const ready = !loading && myCart.length > 0;
-
-    let delivery = null
-
-    let subtotal = myCart && formatPrice(myCart.reduce((acc, product) => {
-        return acc + (product?.product?.precio * product.quantity)
-    }, 0))
-
-    if (despachoDelibery) {
-        delivery = null
-    } else {
-        delivery = formatPrice(0)
-    }
-
-    console.log(despachoDelibery)
-    console.log(delivery)
 
     return (
         <div className={style.container}>
@@ -59,7 +45,7 @@ export default function CheckoutInfo ({ myCart, loading, despachoDelibery }) {
 
                                     <span>
                                         {
-                                            subtotal
+                                            formatPrice(subtotal)
                                         }
                                     </span>
                                 </div>
@@ -70,7 +56,20 @@ export default function CheckoutInfo ({ myCart, loading, despachoDelibery }) {
 
                                     <span>
                                         {
-                                            delivery
+                                            typeof delivery === "number" ? formatPrice(delivery) : delivery
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                            <div className={style.totalContainer}>
+                                <div className={style.flexShowPrices}>
+                                    <span>
+                                        Total
+                                    </span>
+
+                                    <span>
+                                        {
+                                            typeof total === "number" ? formatPrice(total) : total
                                         }
                                     </span>
                                 </div>

@@ -1,19 +1,23 @@
 import style from "./style.module.css";
-import { useEffect, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-
-import { LUGARES_DE_ENVIO } from "assets/envios";
-
-export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDespachoDelibery }) {
-    const [departmentSelected, setDeparmentSelected] = useState("");
-    const [provinceSelected, setProvinceSelected] = useState("");
-    const [distritoSelected, setDistritoSelected] = useState("");
+export default function CheckoutForm ({ 
+    iHaveProducts, 
+    despachoDelibery, 
+    setDespachoDelibery, 
+    departmentSelected, 
+    setDeparmentSelected,
+    distritoSelected,
+    setDistritoSelected,
+    provinceSelected,
+    setProvinceSelected,
+    places,
+    handleOnChange
+}) {
     const [needFactura, setNeedFactura] = useState(false);
-    
+    const [, setAcceptTerms] = useState(false);
 
-    console.log(despachoDelibery)
-    console.log(despachoDelibery)
-    console.log(setDespachoDelibery)
+    
 
     const handleDepartmentChange = (e) => {
         setDeparmentSelected(e.target.value);
@@ -33,16 +37,45 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
         setNeedFactura(e.target.checked);
     }
 
+    const refRadio = useRef();
+    
+    useEffect(() => {
+            refRadio.current.checked = false;
+    }, [despachoDelibery])
+
     const handleDespachoChange = (e) => {
         setDespachoDelibery(!despachoDelibery);
+        refRadio.current.checked = false;
+        setDeparmentSelected("");
+        setProvinceSelected("");
+        setDistritoSelected("");
+    }
+
+    const handleWayToPayChange = (e) => {
+        handleOnChange(
+            {
+                target: {
+                    name: "wayToPay",
+                    value: e.target.value
+                }
+            }
+        )
+    }
+
+    const handleTermsChange = (e) => {
+        setAcceptTerms(e.target.checked);
+        handleOnChange(
+            {
+                target: {
+                    name: "terms",
+                    value: e.target.checked
+                }
+            }
+        )
     }
 
     return (
         <div className={style.checkout}>
-            <h1 className={style.h1}>
-                Finaliza tu compra
-            </h1>
-
             {iHaveProducts ? (
                 <div className={style.form}>
                     <h3>Datos Personales</h3>
@@ -51,39 +84,39 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                         <div className={style.form__group}>
                             <div className={style.formElement}>
                                 <label htmlFor="name">Nombre *</label>
-                                <input type="text" name="name" id="name" placeholder="Nombre" />
+                                <input onChange={handleOnChange} type="text" name="name" id="name" placeholder="Nombre" />
                             </div>
 
                             <div className={style.formElement}>
-                                <label htmlFor="lastname">Apellidos *</label>
-                                <input type="text" name="lastname" id="lastname" placeholder="Apellido" />
+                                <label htmlFor="lastName">Apellidos *</label>
+                                <input onChange={handleOnChange} type="text" name="lastName" id="lastName" placeholder="Apellido" />
                             </div>
                         </div>
 
                         <div className={style.form__group}>
                             <div className={style.formElement}>
-                                <label htmlFor="document">Documento de identidad *</label>
-                                <select name="document" id="document">
+                                <label htmlFor="typeDocument">Documento de identidad *</label>
+                                <select onChange={handleOnChange} name="typeDocument" id="typeDocument">
                                     <option value="dni">DNI</option>
                                     <option value="ce">CE</option>
                                 </select>
                             </div>
 
                             <div className={style.formElement}>
-                                <label htmlFor="documentNumber">Nº de documento *</label>
-                                <input type="text" name="documentNumber" id="documentNumber" />
+                                <label htmlFor="document">Nº de documento *</label>
+                                <input onChange={handleOnChange} type="text" name="document" id="document" />
                             </div>
                         </div>
 
                         <div className={style.form__group}>
                             <div className={style.formElement}>
                                 <label htmlFor="email">Correo electrónico *</label>
-                                <input type="email" name="email" id="email" />
+                                <input onChange={handleOnChange} type="email" name="email" id="email" />
                             </div>
 
                             <div className={style.formElement}>
                                 <label htmlFor="phone">Teléfono *</label>
-                                <input type="text" name="phone" id="phone" />
+                                <input onChange={handleOnChange} type="text" name="phone" id="phone" />
                             </div>
                         </div>
                     </form>
@@ -117,7 +150,7 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                             despachoDelibery && (
                                 <>
                                     {
-                                        departmentSelected === "Lima" && (
+                                        departmentSelected === "Lima" && provinceSelected === "Lima" && (
                                             <div className={style.form__group}>
                                                 <p className={style.infoText}>
                                                     La fecha de entrega se coordinará por whatsapp con el cliente y no será mayor a 3 días a partir de la verificación del pago.
@@ -130,7 +163,7 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                                             <label htmlFor="departamento">Departamento *</label>
                                             <select onChange={handleDepartmentChange} name="departamento" id="departamento">
                                                 <option value=""></option>
-                                                {LUGARES_DE_ENVIO.map((department, index) => (
+                                                {places.map((department, index) => (
                                                     <option key={index} value={department.department}>{department.department}</option>
                                                 ))}
                                             </select>
@@ -141,7 +174,7 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                                             <select onChange={handleProvinceChange} name="document" id="document">
                                                 <option selected={provinceSelected === ""} value=""></option>
                                                 {
-                                                    LUGARES_DE_ENVIO
+                                                    places
                                                         .filter((department) => department.department === departmentSelected)[0]?.provinces
                                                         .map((province, index) => (
                                                             <option key={index} value={province.name}>{province.name}</option>
@@ -155,11 +188,11 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                                             <select onChange={handleDistritoChange} name="document" id="document">
                                                 <option selected={distritoSelected === ""} value=""></option>
                                                 {
-                                                    LUGARES_DE_ENVIO
+                                                    places
                                                         .filter((department) => department.department === departmentSelected)[0]?.provinces
                                                         .filter((province) => province.name === provinceSelected)[0]?.districts
                                                         .map((district, index) => (
-                                                            <option key={index} value={district}>{district}</option>
+                                                            <option key={index} value={district.name}>{district.name}</option>
                                                         ))
                                                 }
                                             </select>
@@ -215,14 +248,14 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                     <h2>¿Cuál será su forma de pago?</h2>
                     <form>
                         {
-                            departmentSelected !== "Lima" && despachoDelibery
+                            (departmentSelected !== "Lima" || provinceSelected !== "Lima") && despachoDelibery
                             ? (
                                 <>
                                     <div className={style.form__group}>
                                         <div className={`${style.formElement} noMarginTop`}>
                                             <div  className={style.interContainerInput}>
-                                                <input type="radio" name="pago" id="pago" value="coordinar" />
-                                                <label type="radio" htmlFor="pago">Pago a coordinar </label>
+                                                <input ref={refRadio} onChange={handleWayToPayChange} type="radio" name="wayToPay" id="wayToPay" value="coordinar" />
+                                                <label type="radio" htmlFor="wayToPay">Pago a coordinar </label>
                                             </div>
                                         </div>
                                     </div>
@@ -237,23 +270,34 @@ export default function CheckoutForm ({ iHaveProducts, despachoDelibery, setDesp
                                 <div className={style.form__group}>
                                     <div className={`${style.formElement} noMarginTop`}>
                                         <div  className={style.interContainerInput}>
-                                            <input type="radio" name="pago" id="pago" value="yape" />
-                                            <label type="radio" htmlFor="pago">Yape</label>
+                                            <input ref={refRadio} onChange={handleWayToPayChange} type="radio" name="wayToPay" id="wayToPay" value="yape" />
+                                            <label type="radio" htmlFor="wayToPay">Yape</label>
                                         </div>
                                     
                                         <div  className={style.interContainerInput}>
-                                            <input type="radio" name="pago" id="pago" value="plin" />
-                                            <label type="radio" htmlFor="pago">Plin</label>
+                                            <input onChange={handleWayToPayChange} type="radio" name="wayToPay" id="wayToPay" value="plin" />
+                                            <label type="radio" htmlFor="wayToPay">Plin</label>
                                         </div>
                                         
                                         <div  className={style.interContainerInput}>
-                                            <input type="radio" name="pago" id="pago" value="transferencia" />
-                                            <label type="radio" htmlFor="pago">Transferencia</label>
+                                            <input onChange={handleWayToPayChange} type="radio" name="wayToPay" id="wayToPay" value="transferencia" />
+                                            <label type="radio" htmlFor="wayToPay">Transferencia</label>
                                         </div>
                                     </div>
                                 </div>
                             )
                         }
+                    </form>
+
+                    <form>
+                    <div className={style.form__group}>
+                            <div className={style.formElement}>
+                                <div  className={style.interContainerInput}>
+                                    <input onChange={handleTermsChange} type="checkbox" name="factura" id="factura" />
+                                    <label htmlFor="direccion">Acepto los <b>terminos y condiciones</b></label>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                     <div  className={style.submit_button__container}>
                         <button className={style.submit_button}>

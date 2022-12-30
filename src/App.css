@@ -30,3 +30,11 @@ main {
 .flex {
     display: flex;
 }
+
+.main-title {
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #e2e2e2;
+    display: flex;
+    align-items: center;
+}

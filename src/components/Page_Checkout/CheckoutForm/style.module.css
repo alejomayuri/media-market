@@ -1,19 +1,8 @@
 .checkout {
     padding: 15px;
+    padding-left: 0;
     width: 60%;
 }
-
-.h1 {
-    font-weight: 500;
-    padding-bottom: 5px;
-    border-bottom: solid 2px #e2e2e2;
-    display: flex;
-    align-items: center;
-}
-
-/* .container {
-    display: flex;
-} */
 
 .form {
     width: 100%;
@@ -114,7 +103,7 @@
     margin: 0 10px;
     background-color: #fff3b3;;
     padding: 20px;
-    border: solid 1px #c4c10b;
+    border: solid 1px #ffe101;
     box-sizing: border-box;
     border-radius: 5px;
 }

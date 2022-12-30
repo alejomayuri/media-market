@@ -5,14 +5,22 @@ export const LUGARES_DE_ENVIO = [
             {
                 name: "Lima",
                 districts: [
-                    "Lima",
-                    "San Isidro",
+                    {
+                        name: "Lima",
+                        price: 10
+                    },
+                    {
+                        name: "San Isidro",
+                        price: 15
+                    },
                 ]
             },
             {
                 name: "Oyon",
                 districts: [
-                    "Oyon",
+                    {
+                        name: "Oyon",
+                    }
                 ]
             }
         ]
@@ -23,15 +31,23 @@ export const LUGARES_DE_ENVIO = [
             {
                 name: "Cusco",
                 districts: [
-                    "Cusco",
-                    "San Jeronimo",
+                    {
+                        name: "Cusco",
+                    },
+                    {
+                        name: "San Jeronimo",
+                    }
                 ]
             },
             {
                 name: "Acomayo",
                 districts: [
-                    "Acomayo",
-                    "Chincheros",
+                    {
+                        name: "Acomayo",
+                    },
+                    {
+                        name: "Chincheros",
+                    }
                 ]
             }
         ]
