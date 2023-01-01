@@ -12,7 +12,11 @@ const firebaseConfig = {
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
+export function getFirestore() {
+  return firebase.firestore()
+}
+
+const db = getFirestore();
 
 export const productsColection = () => {
   return db

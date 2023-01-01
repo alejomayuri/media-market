@@ -12,12 +12,15 @@ export default function CheckoutForm ({
     provinceSelected,
     setProvinceSelected,
     places,
-    handleOnChange
+    handleOnChange,
+    showNoCompleteMessage,
+    handleSubmitOrder,
+    typeDocument,
+    documentValue
 }) {
     const [needFactura, setNeedFactura] = useState(false);
     const [, setAcceptTerms] = useState(false);
-
-    
+    const [wrongFormat, setWrongFormat] = useState(false);
 
     const handleDepartmentChange = (e) => {
         setDeparmentSelected(e.target.value);
@@ -42,9 +45,42 @@ export default function CheckoutForm ({
     useEffect(() => {
             refRadio.current.checked = false;
     }, [despachoDelibery])
+   
+    useEffect(() => {
+        if (documentValue === undefined || documentValue === "") {
+            setWrongFormat(false)
+        } else {
+            if (typeDocument === "dni") {
+                documentValue?.match(/^[0-9]+$/) &&
+                documentValue.length === 8 ? setWrongFormat(false) : setWrongFormat(true);
+            }
+            if (typeDocument === "ce") {
+                documentValue?.match(/^[0-9]+$/) &&
+                documentValue.length === 12 ? setWrongFormat(false) : setWrongFormat(true);
+            }
+        }
+    }, [typeDocument, documentValue])
 
     const handleDespachoChange = (e) => {
         setDespachoDelibery(!despachoDelibery);
+        handleOnChange(
+            {
+                target: {
+                    name: "delivery",
+                    value: !despachoDelibery
+                }
+            }
+        )
+        
+        handleOnChange(
+            {
+                target: {
+                    name: "wayToPay",
+                    value: ""
+                }
+            }
+        )
+        
         refRadio.current.checked = false;
         setDeparmentSelected("");
         setProvinceSelected("");
@@ -104,7 +140,7 @@ export default function CheckoutForm ({
 
                             <div className={style.formElement}>
                                 <label htmlFor="document">Nº de documento *</label>
-                                <input onChange={handleOnChange} type="text" name="document" id="document" />
+                                <input className={wrongFormat ? style.wrongFormat : ""} onChange={handleOnChange} type="text" name="document" id="document" />
                             </div>
                         </div>
 
@@ -299,8 +335,15 @@ export default function CheckoutForm ({
                             </div>
                         </div>
                     </form>
+                    {
+                        showNoCompleteMessage && (
+                            <p className={style.noCompleteMessage}>
+                                Por favor, completa todos los campos necesarios
+                            </p>
+                        )
+                    }
                     <div  className={style.submit_button__container}>
-                        <button className={style.submit_button}>
+                        <button onClick={handleSubmitOrder} className={style.submit_button}>
                             Realizar el pedido
                         </button>
                     </div>

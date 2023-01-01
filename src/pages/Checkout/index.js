@@ -5,6 +5,7 @@ import { useCartProducts } from "hooks/useCartProducts";
 import { useEffect, useState } from "react";
 import { LUGARES_DE_ENVIO } from "assets/envios";
 import useCheckoutForm from "hooks/useCheckoutForm";
+import useMakeAnOrder from "hooks/useMakeAnOrder";
 
 export default function Checkout () {
     const { products } = useCartProductsContext();
@@ -15,15 +16,18 @@ export default function Checkout () {
     const [departmentSelected, setDeparmentSelected] = useState("");
     const [provinceSelected, setProvinceSelected] = useState("");
     const [distritoSelected, setDistritoSelected] = useState("");
+    
+    const [showNoCompleteMessage, setShowNoCompleteMessage] = useState(false);
 
     const {
         formData,
         disabledButton,
         handleOnChange,
-        // setDisabledButton
     } = useCheckoutForm()
+    
+    // console.log(formData)
 
-    console.log(formData)
+    const { handleMakeAnOrder } = useMakeAnOrder({formData})
 
     let delivery = null
     let total = null
@@ -74,9 +78,30 @@ export default function Checkout () {
     }, [formData, subtotal, delivery, total])
 
     useEffect(() => {
-        formData.delivery = despachoDelibery
+        handleOnChange(
+            {
+                target: {
+                    name: "delivery",
+                    value: despachoDelibery
+                }
+            }
+        )
+        // formData.delivery = despachoDelibery
         FormData.wayToPay = null
-    }, [formData, despachoDelibery])
+    }, [despachoDelibery])
+
+    useEffect(() => {
+        if (!disabledButton) setShowNoCompleteMessage(false);
+    }, [disabledButton])
+
+    const handleSubmitOrder = (e) => {
+        if (disabledButton) {
+            setShowNoCompleteMessage(true);
+        } else {
+            console.log("Formulario enviado");
+            handleMakeAnOrder(e)
+        }
+    }
 
     return (
         <main>
@@ -97,6 +122,11 @@ export default function Checkout () {
                     setProvinceSelected={setProvinceSelected}
                     places={LUGARES_DE_ENVIO}
                     handleOnChange={handleOnChange}
+                    disabledButton={disabledButton}
+                    showNoCompleteMessage={showNoCompleteMessage}
+                    handleSubmitOrder={handleSubmitOrder}
+                    typeDocument={formData.typeDocument}
+                    documentValue={formData.document}
                 />
 
                 <CheckoutInfo 

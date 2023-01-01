@@ -55,6 +55,7 @@
     box-sizing: border-box;
     font-size: 16px;
     letter-spacing: 1.1px;
+    outline: none;
 }
 
 .interContainerInput {
@@ -97,6 +98,11 @@
     background: #ff0000;
 }
 
+.submit_button:disabled {
+    background: rgba(243, 0, 0, 0.5);;
+    cursor: not-allowed;
+}
+
 .infoText {
     font-size: 16px;
     font-weight: 600;
@@ -106,4 +112,19 @@
     border: solid 1px #ffe101;
     box-sizing: border-box;
     border-radius: 5px;
+}
+
+.noCompleteMessage {
+    padding: 5px 15px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #0d0d0d;
+    border: solid 2px #f00;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: #ffe2e2;
+}
+
+.wrongFormat {
+    border: solid 2px #f00 !important;
 }
