@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useUser from "hooks/useUser";
 import GoogleIcon from "components/global/Icons/Google";
 
-export default function LoginWithGoogle ({reloc = "/"}) {
+export default function LoginWithGoogle ({relocUrl = "/", reloc = false}) {
     const { user, isLogged } = useUser();
 
     const handleLoginWithGoogle = () => {
@@ -12,8 +12,8 @@ export default function LoginWithGoogle ({reloc = "/"}) {
     };
 
     useEffect(() => {
-        if (isLogged) {
-          window.location.href = `${reloc}`;
+        if (isLogged && reloc) {
+          window.location.href = `${relocUrl}`;
         }
       }, [isLogged, user]);
 

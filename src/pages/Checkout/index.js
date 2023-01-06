@@ -26,6 +26,8 @@ export default function Checkout () {
         handleOnChange,
     } = useCheckoutForm()
 
+    console.log(formData)
+
     const { handleMakeAnOrder, loadingOrder } = useMakeAnOrder({formData})
 
     let delivery = null

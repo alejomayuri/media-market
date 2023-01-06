@@ -135,6 +135,18 @@
     border: solid 2px #f00 !important;
 }
 
+.login__container {
+    padding: 15px;
+    background: #fff;
+}
+
+.login__container p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 1024px) {
     .checkout {
         width: 100%;

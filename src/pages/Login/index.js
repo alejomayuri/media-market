@@ -11,7 +11,7 @@ export default function Login () {
                 <p>
                     Inicia sesión para poder hacer compras, guardar tus productos favoritos y ver tus pedidos.
                 </p>
-                <LoginWithGoogle />
+                <LoginWithGoogle reloc={true} />
             </div>
         </main>
     ) 

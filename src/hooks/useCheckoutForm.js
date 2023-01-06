@@ -1,11 +1,15 @@
+import firebase from "firebase/compat/app";
 import { useEffect, useState } from "react";
 import { useCartProductsContext } from "context/CartProductsContext";
+import useUser from "./useUser";
 
 export default function useCheckoutForm () {
 
     const { products } = useCartProductsContext();
+    const { user, isLogged } = useUser();
 
     const FORM_STATE = {
+        user: null,
         name: null,
         lastName: null,
         typeDocument: "dni",
@@ -26,11 +30,22 @@ export default function useCheckoutForm () {
         products: products,
         subtotal: null,
         deliveryPrice: null,
-        total: null
+        total: null,
+        // date : new Date().toLocaleString()
+        createdAt : firebase.firestore.Timestamp.fromDate(new Date())
     }
 
     const [formData, setFormData] = useState(FORM_STATE)
     const [disabledButton, setDisabledButton] = useState(true)
+
+    useEffect(() => {
+        if (isLogged) {
+            setFormData({
+                ...formData,
+                user: user?.uid,
+            })
+        }
+    }, [isLogged])
 
     const handleOnChange = (e) => setFormData({
         ...formData,
@@ -38,7 +53,8 @@ export default function useCheckoutForm () {
     })
 
     useEffect(() => {
-        if (formData.name && 
+        if (formData.user && 
+            formData.name && 
             formData.lastName && 
             formData.document && 
             formData.email && 
