@@ -17,7 +17,7 @@ export default function useCheckoutForm () {
         province: null,
         district: null,
         address: null,
-        bill: null,
+        bill: false,
         businessName: null,
         ruc: null,
         moreInfo: null,
@@ -53,7 +53,19 @@ export default function useCheckoutForm () {
             formData.total >= 0
             ) {
             if (formData.delivery) {
-                setDisabledButton(true)
+                if (formData.department && formData.province && formData.district && formData.address) {
+                    if (formData.bill) {
+                        if (formData.businessName && formData.ruc) {
+                            setDisabledButton(false)
+                        } else {
+                            setDisabledButton(true)
+                        }
+                    } else {
+                        setDisabledButton(false)
+                    }
+                } else {
+                    setDisabledButton(true)
+                }
             } else {
                 setDisabledButton(false)
             }

@@ -7,8 +7,12 @@ import DownArrowIcon from "components/global/Icons/DownArrowIcon";
 import Dropdown from "components/Dropdown";
 import StoreLocation from "components/StoreLocation";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
+import { Link } from "wouter";
+import useUser from "hooks/useUser";
 
 export default function SiteHeader() {
+  const { user } = useUser();
+  console.log(user)
   const width = useDeviceWidth();
 
   return (
@@ -22,10 +26,21 @@ export default function SiteHeader() {
         <div className={style.div__form__container}>
           {width > devices.mobile && <SearchBar />}
           <ul className={style.ul}>
-            <li className={`${style.li} ${style.only__tablet__desk}`}>
-              Iniciar sesión
-              <DownArrowIcon width={25} />
-            </li>
+            {
+              user ? (
+                <li className={`${style.li} ${style.only__tablet__desk} ${style.userName}`}>
+                  Hola, {user.username}
+                  <DownArrowIcon width={25} />
+                </li>
+              ) : (
+                <Link href="/login">
+                  <li className={`${style.li} ${style.only__tablet__desk}`}>
+                    Iniciar sesión
+                    <DownArrowIcon width={25} />
+                  </li>
+                </Link>
+              )
+            }
             <li className={`${style.li} ${style.only__desk}`}>
               Mis compras
               <DownArrowIcon width={25} />

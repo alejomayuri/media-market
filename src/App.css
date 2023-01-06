@@ -31,6 +31,18 @@ main {
     display: flex;
 }
 
+@media screen and (max-width: 1024px) {
+    .flex {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .soft-padding {
+        padding: 0 15px;
+    }
+}
+
 .main-title {
     font-weight: 500;
     padding-bottom: 5px;

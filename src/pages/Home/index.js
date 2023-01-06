@@ -5,6 +5,7 @@ import HomeBrands from "components/HomeBrands";
 import HomeCategories from "components/HomeCategories";
 import HomeProducts from "components/HomeProducts";
 import HomeSquareCards from "components/HomeSquareCards";
+import useUser from "hooks/useUser";
 
 export default function Home() {
   return (

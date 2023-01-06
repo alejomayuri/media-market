@@ -43,7 +43,7 @@
     margin: 20px;
 }
 
-.formElement input, .formElement select {
+.formElement input, .formElement select, .formElement textarea {
     display: block;
     border-radius: 4px;
     border: 1px solid #d3d5d7;
@@ -56,7 +56,13 @@
     font-size: 16px;
     letter-spacing: 1.1px;
     outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
+
+.formElement textarea {
+    padding: 15px;
+    height: 100px;
+} 
 
 .interContainerInput {
     display: flex;
@@ -127,4 +133,23 @@
 
 .wrongFormat {
     border: solid 2px #f00 !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .checkout {
+        width: 100%;
+        padding: 0;
+    }
+
+    .formElement {
+        margin: 10px;
+    }
+
+    .form__group label {
+        font-size: 14px;
+    }
+
+    .form h3, .form h2 {
+        padding-left: 10px;
+    }
 }

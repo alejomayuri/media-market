@@ -9,6 +9,7 @@ import { Route } from "wouter";
 import { CartProductsProvider } from "context/CartProductsContext";
 import Product from "pages/Product";
 import Checkout from "pages/Checkout";
+import Login from "pages/Login";
 // import HomeBanner from "components/HomeBanner";
 
 function App() {
@@ -16,10 +17,9 @@ function App() {
     <CartProductsProvider>
       <div className="App">
         <SiteHeader />
-        {/* <HomeBanner /> */}
+
         <Route component={Home} path="/" />
 
-        {/*Esta es la correcta*/}
         <Route component={Productos} path="/catalogo" />
 
         <Route component={Cart} path="/carrito" />
@@ -27,6 +27,8 @@ function App() {
         <Route component={Product} path="/productos/:id" />
 
         <Route component={Checkout} path="/checkout" />
+
+        <Route component={Login} path="/login" />
 
         <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
 

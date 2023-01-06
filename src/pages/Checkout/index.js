@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { LUGARES_DE_ENVIO } from "assets/envios";
 import useCheckoutForm from "hooks/useCheckoutForm";
 import useMakeAnOrder from "hooks/useMakeAnOrder";
+import CreateOrderLoading from "components/Page_Checkout/CreateOrderLoading";
 
 export default function Checkout () {
     const { products } = useCartProductsContext();
@@ -24,10 +25,8 @@ export default function Checkout () {
         disabledButton,
         handleOnChange,
     } = useCheckoutForm()
-    
-    // console.log(formData)
 
-    const { handleMakeAnOrder } = useMakeAnOrder({formData})
+    const { handleMakeAnOrder, loadingOrder } = useMakeAnOrder({formData})
 
     let delivery = null
     let total = null
@@ -109,6 +108,9 @@ export default function Checkout () {
                 Finaliza tu compra
             </h1>
             <div className="flex">
+                {
+                    loadingOrder ? <CreateOrderLoading /> : null
+                }
                 <CheckoutForm 
                     iHaveProducts={products.length > 0} 
                     despachoDelibery={despachoDelibery} 

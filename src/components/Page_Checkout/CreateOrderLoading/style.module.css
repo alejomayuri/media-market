@@ -1,0 +1,18 @@
+.creatingProduct_container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    background: #ffffff9e;
+    z-index: 99;
+}
+
+.creatingProduct_spinner {
+    height: 100px;
+    width: 100px;
+}

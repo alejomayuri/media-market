@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import "firebase/compat/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAr0P309iJ4dINlD5n7T-Sz0sr1-J_H5io",
@@ -33,4 +34,29 @@ export const productsColection = () => {
         };
       });
     });
+};
+
+const mapUserFromFirebaseAuthToUser = (user) => {
+  const { displayName, email, uid } = user;
+
+  return {
+    username: displayName,
+    email,
+    uid,
+  };
+};
+
+export const onAuthStateChanged = (onChange) => {
+  return firebase.auth().onAuthStateChanged((user) => {
+    const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null;
+    onChange(normalizedUser);
+  });
+};
+
+export const loginWithGoogle = () => {
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  return firebase
+    .auth()
+    .signInWithPopup(googleProvider)
+    .then((user) => mapUserFromFirebaseAuthToUser(user));
 };

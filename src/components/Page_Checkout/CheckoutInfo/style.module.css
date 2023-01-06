@@ -65,3 +65,9 @@
     border-top: solid 1px #000;
     margin-top: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+}

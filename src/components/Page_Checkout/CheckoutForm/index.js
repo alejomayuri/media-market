@@ -25,19 +25,55 @@ export default function CheckoutForm ({
     const handleDepartmentChange = (e) => {
         setDeparmentSelected(e.target.value);
         setProvinceSelected("");
+
+        handleOnChange(
+            {
+                target: {
+                    name: "department",
+                    value: e.target.value
+                }
+            }
+        )
     }
 
     const handleProvinceChange = (e) => {
         setProvinceSelected(e.target.value);
         setDistritoSelected("");
+
+        handleOnChange(
+            {
+                target: {
+                    name: "province",
+                    value: e.target.value
+                }
+            }
+        )
     }
 
     const handleDistritoChange = (e) => {
         setDistritoSelected(e.target.value);
+
+        handleOnChange(
+            {
+                target: {
+                    name: "district",
+                    value: e.target.value
+                }
+            }
+        )
     }
 
     const handleFacturaChange = (e) => {
         setNeedFactura(e.target.checked);
+
+        handleOnChange(
+            {
+                target: {
+                    name: "bill",
+                    value: e.target.checked
+                }
+            }
+        )
     }
 
     const refRadio = useRef();
@@ -47,7 +83,7 @@ export default function CheckoutForm ({
     }, [despachoDelibery])
    
     useEffect(() => {
-        if (documentValue === undefined || documentValue === "") {
+        if (documentValue === null || documentValue === undefined || documentValue === "") {
             setWrongFormat(false)
         } else {
             if (typeDocument === "dni") {
@@ -196,8 +232,8 @@ export default function CheckoutForm ({
                                     }
                                     <div className={style.form__group}>
                                         <div className={style.formElement}>
-                                            <label htmlFor="departamento">Departamento *</label>
-                                            <select onChange={handleDepartmentChange} name="departamento" id="departamento">
+                                            <label htmlFor="department">Departamento *</label>
+                                            <select onChange={handleDepartmentChange} name="department" id="department">
                                                 <option value=""></option>
                                                 {places.map((department, index) => (
                                                     <option key={index} value={department.department}>{department.department}</option>
@@ -206,8 +242,8 @@ export default function CheckoutForm ({
                                         </div>
 
                                         <div className={style.formElement}>
-                                            <label htmlFor="document">Provincia *</label>
-                                            <select onChange={handleProvinceChange} name="document" id="document">
+                                            <label htmlFor="province">Provincia *</label>
+                                            <select onChange={handleProvinceChange} name="province" id="province">
                                                 <option selected={provinceSelected === ""} value=""></option>
                                                 {
                                                     places
@@ -220,8 +256,8 @@ export default function CheckoutForm ({
                                         </div>
 
                                         <div className={style.formElement}>
-                                            <label htmlFor="document">Distrito *</label>
-                                            <select onChange={handleDistritoChange} name="document" id="document">
+                                            <label htmlFor="district">Distrito *</label>
+                                            <select onChange={handleDistritoChange} name="district" id="district">
                                                 <option selected={distritoSelected === ""} value=""></option>
                                                 {
                                                     places
@@ -237,15 +273,15 @@ export default function CheckoutForm ({
 
                                     <div className={style.form__group}>
                                         <div className={style.formElement}>
-                                            <label htmlFor="direccion">Dirección *</label>
-                                            <input type="text" name="direccion" id="direccion" />
+                                            <label htmlFor="address">Dirección *</label>
+                                            <input onChange={handleOnChange} type="text" name="address" id="address" />
                                         </div>
                                     </div>
 
                                     <div className={style.form__group}>
                                         <div className={style.formElement}>
                                             <div  className={style.interContainerInput}>
-                                                <input onClick={handleFacturaChange} type="checkbox" name="factura" id="factura" />
+                                                <input onClick={handleFacturaChange} type="checkbox" name="bill" id="bill" />
                                                 <label htmlFor="direccion">¿Necesitas factura?</label>
                                             </div>
                                         </div>
@@ -255,15 +291,15 @@ export default function CheckoutForm ({
                                         <>
                                             <div className={style.form__group}>
                                                 <div className={style.formElement}>
-                                                    <label htmlFor="direccion">Razón Social *</label>
-                                                    <input type="text" name="direccion" id="direccion" />
+                                                    <label htmlFor="businessName">Razón Social *</label>
+                                                    <input onChange={handleOnChange} type="text" name="businessName" id="businessName" />
                                                 </div>
                                             </div>
 
                                             <div className={style.form__group}>
                                                 <div className={style.formElement}>
-                                                    <label htmlFor="direccion">N° de RUC *</label>
-                                                    <input type="text" name="direccion" id="direccion" />
+                                                    <label htmlFor="ruc">N° de RUC *</label>
+                                                    <input onChange={handleOnChange} type="text" name="ruc" id="ruc" />
                                                 </div>
                                             </div>
                                         </>
@@ -271,8 +307,8 @@ export default function CheckoutForm ({
 
                                     <div className={style.form__group}>
                                         <div className={style.formElement}>
-                                            <label htmlFor="direccion">¿Alguna indicación sobre su pedido?</label>
-                                            <textarea name="indicacion" id="indicacion" />
+                                            <label htmlFor="moreInfo">¿Alguna indicación sobre su pedido?</label>
+                                            <textarea onChange={handleOnChange} name="moreInfo" id="moreInfo" />
                                         </div>
                                     </div>
                                 </>
