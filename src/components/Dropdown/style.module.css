@@ -1,4 +1,9 @@
+.containerRelative {
+  position: relative;
+}
+
 .dropdown_wrapper {
+    height: 100%;
     position: relative;
     display: inline-block;
   }
@@ -59,6 +64,17 @@
     border-bottom: solid 3px #bd0000;
   }
 
+  .tinyBox {
+    background-color: rgb(245, 245, 245);
+    height: auto;
+    left: 0;
+    margin-top: 60px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-bottom: solid 3px #bd0000;
+  }
+
   /* button */
 
   .button {
@@ -72,7 +88,7 @@
     height: 100%;
     justify-content: space-evenly;
     margin: 0 10px;
-    padding: 0 20px;
+    padding: 0 10px;
     transition: ease-in-out 0.2s;
     width: 120px;
 }

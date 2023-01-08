@@ -36,6 +36,24 @@ export const productsColection = () => {
     });
 };
 
+export const ordersColection = () => {
+  return db
+    .collection("orders")
+    .orderBy("createdAt", "desc")
+    .get()
+    .then(({ docs }) => {
+      return docs.map((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+
+        return {
+          ...data,
+          id,
+        };
+      });
+    });
+};
+
 const mapUserFromFirebaseAuthToUser = (user) => {
   const { displayName, email, uid } = user;
 
@@ -60,3 +78,7 @@ export const loginWithGoogle = () => {
     .signInWithPopup(googleProvider)
     .then((user) => mapUserFromFirebaseAuthToUser(user));
 };
+
+export const logout = () => {
+  return firebase.auth().signOut();
+}

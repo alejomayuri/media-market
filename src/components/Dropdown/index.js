@@ -1,17 +1,12 @@
 import style from "./style.module.css";
 import React, { useState, useEffect, useRef } from "react";
-import { devices } from "styles/theme";
-import MenuIcon from "components/global/Icons/MenuIcon";
-import { useDeviceWidth } from "hooks/useDeviceWidth";
-import SearchBar from "components/global/SearchBar";
-import { REAL_CATEGORIES, BRANDS } from "assets/cats";
-import CategoriesAndSubcategoriesList from "components/global/CategoriesAndSubcategoriesList";
+import DisplayedMenu from "components/DisplayedMenu";
+import UserOptions from "components/UserOptions";
 
-function Dropdown({ dropdownTitle }) {
+function Dropdown({ dropdownTitle, children, containerRelative = false, tiny = false, childrenContent }) {
   const activatorRef = useRef(null);
   const dropdownListRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const width = useDeviceWidth();
 
   const clickHandler = () => {
     setIsOpen(!isOpen);
@@ -45,8 +40,16 @@ function Dropdown({ dropdownTitle }) {
     }
   }, [isOpen]);
 
+  let childrenContentComponent = null;
+
+  if (childrenContent === "displayedMenu") {
+    childrenContentComponent = <DisplayedMenu clickHandler={clickHandler} />;
+  } else if (childrenContent === "userOptions") {
+    childrenContentComponent = <UserOptions clickHandler={clickHandler} />;
+  }
+
   return (
-    <>
+    <div className={`${style.container} ${containerRelative ? style.containerRelative : ""}`}>
       <div className={style.dropdown_wrapper} onKeyUp={keyHandler}>
         <button
           className={style.button}
@@ -55,49 +58,18 @@ function Dropdown({ dropdownTitle }) {
           onClick={clickHandler}
           ref={activatorRef}
         >
-          {dropdownTitle} <MenuIcon />
-          {width > devices.mobile && "Menu"}
+          {dropdownTitle}
         </button>
       </div>
       <div
         ref={dropdownListRef}
-        className={`${style.box} ${isOpen ? style.active : ""} ${
+        className={`${tiny ? style.tinyBox : style.box} ${isOpen ? style.active : ""} ${
           style.dropdown_item_list
         }`}
       >
-        <div className={style.menu__container}>
-          <div>
-            {width <= devices.mobile && (
-              <div className={style.top__menu}>
-                <SearchBar />
-              </div>
-            )}
-            <div className={style.no_tablet_desk__myShopping}>
-              <button>
-                <span>Iniciar sesión</span>
-              </button>
-            </div>
-            <div className={style.no_desk__myShopping}>
-              <button onClick={clickHandler}>
-                <span>Mis compras</span>
-              </button>
-            </div>
-
-            <CategoriesAndSubcategoriesList
-              data={REAL_CATEGORIES}
-              onClick={clickHandler}
-              title="Categorías"
-            />
-
-            <CategoriesAndSubcategoriesList
-              data={BRANDS}
-              onClick={clickHandler}
-              title="Marcas"
-            />
-          </div>
-        </div>
+        {childrenContentComponent ? childrenContentComponent : children}
       </div>
-    </>
+    </div>
   );
 }
 

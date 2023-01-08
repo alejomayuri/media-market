@@ -9,29 +9,54 @@ import StoreLocation from "components/StoreLocation";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
 import { Link } from "wouter";
 import useUser from "hooks/useUser";
+import MenuIcon from "components/global/Icons/MenuIcon";
 
 export default function SiteHeader() {
   const { user } = useUser();
-  console.log(user)
+  // console.log(user)
   const width = useDeviceWidth();
+  const menuText = width > devices.mobile && "Menu"
+
+  let headerMenu = (
+    <Dropdown dropdownTitle={
+      (
+        <>
+          <MenuIcon />
+          {menuText}
+        </>
+      )
+    } childrenContent="displayedMenu" />
+  )
+
+  let userOptionsMenu = (
+    <Dropdown containerRelative={true} tiny={true} dropdownTitle={
+      (
+        <>
+          <span style={
+            {textAlign: "left", fontSize: "16px", width: "100"}
+          }>
+            Hola, {user && user.username}
+          </span>
+          <DownArrowIcon width={25} />
+        </>
+      )
+    } childrenContent="userOptions" />
+  )
 
   return (
     <>
       <header className={style.header}>
         <div>
-          {width <= devices.mobile && <Dropdown />}
+          {width <= devices.mobile && headerMenu}
           <Logo />
-          {width > devices.mobile && <Dropdown />}
+          {width > devices.mobile && headerMenu}
         </div>
         <div className={style.div__form__container}>
           {width > devices.mobile && <SearchBar />}
           <ul className={style.ul}>
             {
               user ? (
-                <li className={`${style.li} ${style.only__tablet__desk} ${style.userName}`}>
-                  Hola, {user.username}
-                  <DownArrowIcon width={25} />
-                </li>
+                  userOptionsMenu
               ) : (
                 <Link href="/login">
                   <li className={`${style.li} ${style.only__tablet__desk}`}>
@@ -41,10 +66,12 @@ export default function SiteHeader() {
                 </Link>
               )
             }
-            <li className={`${style.li} ${style.only__desk}`}>
-              Mis compras
-              <DownArrowIcon width={25} />
-            </li>
+            <Link href="/mis-compras">
+              <li className={`${style.li} ${style.only__desk}`}>
+                Mis compras
+                <DownArrowIcon width={25} />
+              </li>
+            </Link>
           </ul>
           <CartButton />
         </div>

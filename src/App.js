@@ -10,6 +10,7 @@ import { CartProductsProvider } from "context/CartProductsContext";
 import Product from "pages/Product";
 import Checkout from "pages/Checkout";
 import Login from "pages/Login";
+import MyShopping from "pages/MyShopping";
 // import HomeBanner from "components/HomeBanner";
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route component={Checkout} path="/checkout" />
 
         <Route component={Login} path="/login" />
+
+        <Route component={MyShopping} path="/mis-compras" />
 
         <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
 
