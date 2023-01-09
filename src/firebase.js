@@ -36,22 +36,12 @@ export const productsColection = () => {
     });
 };
 
+// const userAuthUid = firebase.auth().currentUser.uid || null;
+
 export const ordersColection = () => {
   return db
     .collection("orders")
-    .orderBy("createdAt", "desc")
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data();
-        const id = doc.id;
-
-        return {
-          ...data,
-          id,
-        };
-      });
-    });
+    // .orderBy("createdAt", "desc")
 };
 
 const mapUserFromFirebaseAuthToUser = (user) => {
