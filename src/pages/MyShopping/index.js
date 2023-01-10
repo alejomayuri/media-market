@@ -1,14 +1,11 @@
 import { useOrders } from "hooks/useOrders"
+import MyShoppingList from "components/Page_MyShopping/MyShoppingList"
 
 export default function MyShopping () {
-    const { orders } = useOrders()
+    const { orders, loading } = useOrders()
 
     const ordersFirstSorted = orders.sort((a, b) => {
         return b.createdAt.seconds - a.createdAt.seconds
-    })
-
-    const ordersSecondSorted = ordersFirstSorted.sort((a, b) => {
-        return b.createdAt.nanoseconds - a.createdAt.nanoseconds
     })
 
     return (
@@ -16,6 +13,11 @@ export default function MyShopping () {
             <h1 className="main-title">
                 Mis compras
             </h1>
+            {
+                loading
+                    ? <p>Cargando...</p>
+                    : <MyShoppingList orders={ordersFirstSorted} />
+            }
         </main>
     )
 }
