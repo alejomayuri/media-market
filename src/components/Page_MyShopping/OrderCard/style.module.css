@@ -1,4 +1,48 @@
 .article {
     margin: 24px;
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 2px 5px 1px #dedede;
+}
+
+.order_info {
+    display: flex;
+    padding-left: 95px;
+}
+
+.order_info p {
+    margin-right: 20px;
+}
+
+.button {
+    margin: 20px 95px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: solid 2px #bd0000;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #bd0000;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .order_info {
+        padding-left: 0;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .order_info p {
+        margin: 10px 0;      
+    }
+
+    .button {
+        margin: 20px 0;
+    }
 }

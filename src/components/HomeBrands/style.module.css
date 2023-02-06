@@ -8,6 +8,10 @@
     scrollbar-width: none;
 }
 
+.brand__logo__container::-webkit-scrollbar {
+    display: none;
+}
+
 @media screen and (max-width: 1200px) {
     .brand__logo__container {
         width: 100%;

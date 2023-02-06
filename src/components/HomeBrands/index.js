@@ -100,12 +100,15 @@ export default function HomeBrands() {
     if (scrollDirection === "right" && scrollOn) {
       thisRef.current.scrollLeft += 1;
     }
+
     if (scrollDirection === "left" && scrollOn) {
       thisRef.current.scrollLeft -= 1;
     }
+
     if (thisRef.current.scrollLeft === 0) {
       setScrollDirection("right");
     }
+
     if (
       thisRef.current.scrollLeft ===
       thisRef.current.scrollWidth - thisRef.current.clientWidth
@@ -116,17 +119,19 @@ export default function HomeBrands() {
     thisRef.current.addEventListener("mouseenter", () => {
       setScrollOn(false);
     });
+    
     thisRef.current.addEventListener("mouseleave", () => {
       setScrollOn(true);
     });
   }, [scrollDirection, scrollOn]);
 
   useEffect(() => {
-    const interval = setInterval(autoScroll, 1);
+    const interval = setInterval(autoScroll, 10);
     return () => {
       clearInterval(interval);
     };
   }, [scrollDirection, scrollOn, autoScroll]);
+
   return (
     <div>
       <div ref={thisRef} className={style.brand__logo__container}>

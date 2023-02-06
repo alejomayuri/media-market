@@ -19,14 +19,14 @@ export default function ProductInOrder ({item}) {
     }
 
     return (
-        <div>
-            <div>
+        <div className={style.container}>
+            <div className={style.header}>
                 <div className={style.image__container}>
                     <img className={style.image} src={image} alt={name} />
                 </div>
                 <h3>{name}</h3>
             </div>
-            <div>
+            <div className={style.body}>
                 <p>Precio: {formatPrice(precio)}</p>
                 <p>Cantidad: {quantity}</p>
             </div>        

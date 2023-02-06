@@ -2,15 +2,19 @@
     align-items: center;
     display: flex;
     justify-content: flex-start;
-    padding: 0 20px;
+    padding: 0 16px;
+    margin-top: 64px;
 }
 
 .location h3 {
-    margin: 5px 10px 5px 0;
+    margin: 8px;
+    margin-left: 0;
 }
 
 .location a {
     color: #000;
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }

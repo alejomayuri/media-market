@@ -20,7 +20,7 @@ export default function CartButton() {
     <div className={style.button__container}>
       <Link href="/carrito">
         <button className={style.button}>
-          <CartIcon className={style.icon} width={40} />
+          <CartIcon className={style.icon} width={30} />
         </button>
         {
           elementsInCart > 0 && (

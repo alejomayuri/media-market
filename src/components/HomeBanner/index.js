@@ -7,7 +7,7 @@ import banner_3 from "media/banner-3.png";
 
 export default function HomeBanner() {
   const [banner, setBanner] = useState(banner_1);
-
+  const images = [banner_1, banner_2, banner_3];
   useEffect(() => {
     const interval = setInterval(() => {
       if (banner === banner_1) {
@@ -24,32 +24,19 @@ export default function HomeBanner() {
   return (
     <div className={style.banner}>
       <img className={style.img} src={banner} alt="banner" />
-      <div className={style.banner__selector}>
-        <button
-          className={
-            banner === banner_1
-              ? style.banner__selector__button_active
-              : style.banner__selector__button
-          }
-          onClick={() => setBanner(banner_1)}
-        ></button>
-        <button
-          className={
-            banner === banner_2
-              ? style.banner__selector__button_active
-              : style.banner__selector__button
-          }
-          onClick={() => setBanner(banner_2)}
-        ></button>
-        <button
-          className={
-            banner === banner_3
-              ? style.banner__selector__button_active
-              : style.banner__selector__button
-          }
-          onClick={() => setBanner(banner_3)}
-        ></button>
-      </div>
+      <ul className={style.banner__selector}>
+        {
+          images.map((image, index) => {
+            return (
+              <li
+                key={index}
+                className={`${style.banner__selector__button} ${banner === image ? style.active : ""}`}
+                onClick={() => setBanner(image)}
+              ></li>
+            );
+          })
+        }
+      </ul>
     </div>
   );
 }

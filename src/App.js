@@ -11,6 +11,8 @@ import Product from "pages/Product";
 import Checkout from "pages/Checkout";
 import Login from "pages/Login";
 import MyShopping from "pages/MyShopping";
+import ShoppingDetail from "pages/ShoppingDetail";
+import Confirmation from "pages/Confirmation";
 // import HomeBanner from "components/HomeBanner";
 
 function App() {
@@ -32,6 +34,10 @@ function App() {
         <Route component={Login} path="/login" />
 
         <Route component={MyShopping} path="/mis-compras" />
+
+        <Route component={ShoppingDetail} path="/mis-compras/:id" />
+
+        <Route component={Confirmation} path="/confirmacion/:id" />
 
         <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
 

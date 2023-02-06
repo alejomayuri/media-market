@@ -4,6 +4,7 @@ import Logo from "components/global/Logo";
 import CartButton from "components/global/CartButton";
 import SearchBar from "components/global/SearchBar";
 import DownArrowIcon from "components/global/Icons/DownArrowIcon";
+import UserIcon from "components/global/Icons/User";
 import Dropdown from "components/Dropdown";
 import StoreLocation from "components/StoreLocation";
 import { useDeviceWidth } from "hooks/useDeviceWidth";
@@ -33,11 +34,11 @@ export default function SiteHeader() {
       (
         <>
           <span style={
-            {textAlign: "left", fontSize: "16px", width: "100"}
+            {textAlign: "left", fontSize: "16px", width: "100", fontWeight: "600"}
           }>
             Hola, {user && user.username}
           </span>
-          <DownArrowIcon width={25} />
+          {/* <DownArrowIcon width={25} /> */}
         </>
       )
     } childrenContent="userOptions" />
@@ -60,18 +61,17 @@ export default function SiteHeader() {
               ) : (
                 <Link href="/login">
                   <li className={`${style.li} ${style.only__tablet__desk}`}>
-                    Iniciar sesión
-                    <DownArrowIcon width={25} />
+                    <UserIcon stroke="#fff" fill="#fff" width={25} />
+                    ingresar
                   </li>
                 </Link>
               )
             }
-            <Link href="/mis-compras">
+            {/* <Link href="/mis-compras">
               <li className={`${style.li} ${style.only__desk}`}>
                 Mis compras
-                <DownArrowIcon width={25} />
               </li>
-            </Link>
+            </Link> */}
           </ul>
           <CartButton />
         </div>

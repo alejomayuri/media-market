@@ -32,12 +32,6 @@ export default function DisplayedMenu ({clickHandler}) {
               onClick={clickHandler}
               title="Categorías"
             />
-
-            <CategoriesAndSubcategoriesList
-              data={BRANDS}
-              onClick={clickHandler}
-              title="Marcas"
-            />
           </div>
         </div>
     )

@@ -4,30 +4,28 @@
 
 .banner__selector {
     height: 20px;
-    width: 100px;
+    width: 86px;
     display: flex;
     margin: 0 auto;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 15px;
+    margin-top: 8px;
+    padding: 0;
 }
 
 .banner__selector__button {
-    width: 10px;
-    height: 10px;
-    border-radius: 20px;
-    border: none;;
-    cursor: pointer;
-    background-color: #bd000076;
-}
-
-.banner__selector__button_active {
-    width: 10px;
-    height: 10px;
-    cursor: pointer;
+    width: 8px;
+    height: 8px;
     border-radius: 20px;
     border: none;
-    background-color: #bd0000
+    cursor: pointer;
+    background-color: #bd000076;
+    list-style: none;
+}
+
+.active {
+    background-color: #bd0000;
+    transform: scale(1.375);
 }
 
 .img {

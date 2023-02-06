@@ -50,3 +50,8 @@ main {
     display: flex;
     align-items: center;
 }
+
+.login__container {
+    padding: 15px;
+    background: #fff;
+}

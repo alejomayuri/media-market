@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import { Link } from "wouter";
+import CategoryIcon from "../Icons/CategoryIcon";
 
 export default function CategoriesAndSubcategoriesList({
   data,
@@ -45,28 +46,11 @@ export default function CategoriesAndSubcategoriesList({
     );
   }
 
-  if (data?.type && data?.type === "brand" && data?.brands) {
-    dataBlobk = (
-      <div className={style.brands__container}>
-        {data?.brands.map((item, index) => {
-          return (
-            <Link
-              onClick={onClick}
-              className={style.a__item_list}
-              href={item.slug}
-              key={index}
-            >
-              <button className={style.brand__button}>{item.name}</button>
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-
   return (
     <div className={style.container}>
-      <h3 className={style.h3}>{title}</h3>
+      <h3 className={style.h3}>
+        <CategoryIcon /> {title}
+      </h3>
       {dataBlobk}
     </div>
   );
