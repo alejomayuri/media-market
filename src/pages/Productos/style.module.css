@@ -3,7 +3,34 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 32px;
+}
+
+.h1 {
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #e2e2e2;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-top: 32px;
+}
+
+.nav {
+    display: flex;
+    margin-top: 16px;
+    align-items: center;
+    height: 30px;
+}
+
+.nav a {
+    font-size: 16px;
+    color: #5c5c5c;
+    font-weight: 500;
+}
+
+.nav svg {
+    transform: rotate(-90deg);
 }
 
 @media screen and (max-width: 1200px) {

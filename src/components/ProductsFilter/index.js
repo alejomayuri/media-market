@@ -1,60 +1,42 @@
 import style from "./style.module.css";
 import React from "react";
 import { Link } from "wouter";
-import { REAL_CATEGORIES, BRANDS } from "assets/cats";
-import useQueryParams from "hooks/useQueryParams";
+import { REAL_CATEGORIES } from "assets/cats";
+import getBrandsOfProducts from "utils/getBrandsOfProducts";
 
-function ProductsFilter() {
-  const params = useQueryParams();
+function ProductsFilter({ params, products }) {
+  let categoryNames = null;
+  let categoryFilter = null;
 
-  const categoryFilter =
-    params &&
-    REAL_CATEGORIES.categories.map((item, index) => {
-      return (
-        <li className={style.category__filter__element} key={index}>
-          <Link href={item.slug}>
-            <button
-              className={`${
-                params.categoria === item.db_name ? style.filter__active : ""
-              }`}
-            >
-              {item.name}
-            </button>
-          </Link>
-          {params.categoria === item.db_name &&
-            item.subcategories &&
-            item.subcategories.length > 0 && (
-              <ul className={style.ul__subcategory}>
-                {item.subcategories.map((subitem, index) => {
-                  return (
-                    <li className={style.category__filter__element} key={index}>
-                      <Link href={subitem.slug}>
-                        <button
-                          className={`${
-                            params.subcategoria === subitem.db_name
-                              ? style.filter__active
-                              : ""
-                          }`}
-                        >
-                          {subitem.name}
-                        </button>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-        </li>
-      );
-    });
+  if (params) {
+    categoryNames = REAL_CATEGORIES.categories?.find((item) => item.db_name === params.categoria)
 
+    if (categoryNames) {
+      categoryFilter = params && categoryNames?.subcategories?.map((item, index) => {
+        return (
+          <li className={`${style.category__filter__element} ${
+            params.subcategoria === item.db_name
+              ? style.filter__active
+              : ""
+          }`} key={index}>
+            <Link href={item.slug}>
+                {item.name}
+            </Link>
+          </li>
+        );
+      });
+    }
+  }
+
+  const brands = getBrandsOfProducts(products, "marca")
+  
   const brandFilterUrl = (item) => {
     if (params.categoria && params.subcategoria) {
-      const urlToUse = `catalogo?categoria=${params.categoria}&subcategoria=${params.subcategoria}&marca=${item.db_name}`;
+      const urlToUse = `catalogo?categoria=${params.categoria}&subcategoria=${params.subcategoria}&marca=${item}`;
       return urlToUse;
     }
     if (params.categoria) {
-      const urlToUse = `catalogo?categoria=${params.categoria}&marca=${item.db_name}`;
+      const urlToUse = `catalogo?categoria=${params.categoria}&marca=${item}`;
       return urlToUse;
     }
     return `catalogo?marca=${item.db_name}`;
@@ -62,41 +44,43 @@ function ProductsFilter() {
 
   const brandFilter =
     params &&
-    BRANDS.brands.map((item, index) => {
+    brands.map((item, index) => {
       return (
-        <li className={style.category__filter__element} key={index}>
+        <li className={`${style.category__filter__element} ${
+          params.marca === item ? style.filter__active : ""
+        }`} key={index}>
           <Link href={brandFilterUrl(item)}>
-            <button
-              className={`${
-                params.marca === item.db_name ? style.filter__active : ""
-              }`}
-            >
-              {item.name}
-            </button>
+              {item}
           </Link>
         </li>
       );
     });
 
   return (
-    <div className={style.filters}>
-      <div className={style.filter__box}>
-        <div className={style.filter__title}>
-          <h3>Categorias</h3>
-        </div>
-        <div className={style.filter__container}>
-          <ul className={style.ul__category}>{categoryFilter}</ul>
-        </div>
-      </div>
-      <div className={style.filter__box}>
-        <div className={style.filter__title}>
-          <h3>Marcas</h3>
-        </div>
-        <div className={style.filter__container}>
-          <ul className={style.ul__category}>{brandFilter}</ul>
-        </div>
-      </div>
-    </div>
+    <>
+      {
+        categoryNames && (
+          <div className={style.filters}>
+            <h3 className={style.h3}>Filtrar por</h3>
+            <div className={style.filter__box}>
+              <div className={style.filter__title}>
+                <p>Categorias</p>
+              </div>
+                <ul className={style.ul__category}>{categoryFilter}</ul>
+            </div>
+            <div className={style.filter__box}>
+              <div className={style.filter__title}>
+                <p>Marcas</p>
+              </div>
+              <div className={style.filter__container}>
+                <ul className={style.ul__category}>{brandFilter}</ul>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </>
+    
   );
 }
 

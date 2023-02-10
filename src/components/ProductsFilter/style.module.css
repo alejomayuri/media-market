@@ -3,46 +3,56 @@
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    width: 30%;
+    min-width: 300px;
     background: #fff;
     padding-top: 20px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    margin-right: 20px;
 }
 
 .filter__box {
-    /* border: solid 2px #bd0000; */
     border-radius: 10px;
-    height: 400px;
-    width: 80%;
+    width: 100%;
     margin-bottom: 30px;
 }
 
-.filter__title {
-    margin-bottom: 15px;
+.h3 {
+    font-size: 22px;
+    width: 100%;
+    font-weight: 600;
+    margin: 8px 0;
 }
 
-.filter__box h3 {
-    margin: 0;
-    border-bottom: solid 3px #bd0000;
-    color: #000;
-    padding: 7px;
-    font-size: 24px;
+.filter__title {
+    font-size: 18px;
     font-weight: 600;
-    border-radius: 7px 7px 0 0;
-    height: 40px;
-    width: 50%;
+}
+
+.filter__title p {
+    margin: 24px 0 8px 0;
 }
 
 .filter__container {
-    padding: 15px;
     padding-top: 0;
-    height: 300px;
-    overflow-y: scroll;
     scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
     scrollbar-width: thin;
 }
 
 .category__filter__element {
     list-style: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 0 8px 0;
+    margin-right: 8px;
+    border-bottom: solid 2px #eee;
+    text-transform: capitalize;
+}
+
+.category__filter__element a {
+    text-decoration: none;
+    color: #000;
+    transition: all 0.2s ease;
 }
 
 .category__filter__element button {
@@ -54,7 +64,6 @@
     padding: 0.5rem 0;
     text-align: left;
     width: 100%;
-    padding-left: 10px;
     transition: all 0.2s ease;
 }
 

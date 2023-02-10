@@ -5,7 +5,7 @@ import Productos from "pages/Productos";
 import Cart from "pages/Cart";
 import SiteFooter from "components/SiteFooter";
 import FixedWhatsAppButton from "components/FixedWhatsAppButton";
-import { Route } from "wouter";
+import { Switch, Route } from "wouter";
 import { CartProductsProvider } from "context/CartProductsContext";
 import Product from "pages/Product";
 import Checkout from "pages/Checkout";
@@ -20,27 +20,19 @@ function App() {
     <CartProductsProvider>
       <div className="App">
         <SiteHeader />
-
-        <Route component={Home} path="/" />
-
-        <Route component={Productos} path="/catalogo" />
-
-        <Route component={Cart} path="/carrito" />
-
-        <Route component={Product} path="/productos/:id" />
-
-        <Route component={Checkout} path="/checkout" />
-
-        <Route component={Login} path="/login" />
-
-        <Route component={MyShopping} path="/mis-compras" />
-
-        <Route component={ShoppingDetail} path="/mis-compras/:id" />
-
-        <Route component={Confirmation} path="/confirmacion/:id" />
-
-        <Route component={() => <h1>404 ERROR :</h1>} path="/404" />
-
+        <Switch>
+          <Route component={Home} path="/" />
+          <Route component={Productos} path="/catalogo" />
+          <Route component={Cart} path="/carrito" />
+          <Route component={Product} path="/productos/:id" />
+          <Route component={Checkout} path="/checkout" />
+          <Route component={Login} path="/login" />
+          <Route component={MyShopping} path="/mis-compras" />
+          <Route component={ShoppingDetail} path="/mis-compras/:id" />
+          <Route component={Confirmation} path="/confirmacion/:id" />
+          <Route component={() => <h1>404 ERROR :</h1>} path="/*" />
+          <Route path="/:rest*">{(params) => `404, Sorry the page ${params.rest} does not exist!`}</Route>
+        </Switch>
         <FixedWhatsAppButton />
         <SiteFooter />
       </div>
